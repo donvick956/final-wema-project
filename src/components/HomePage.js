@@ -91,7 +91,6 @@ const Home = (props) => {
                                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined"/>
                                     <div></div>
                                     <TextField
-                                        // variant = "outline"
                                         id="outlined-adornment-password"
                                         type={values.showPassword ? 'text' : 'password'}
                                         value={values.password}
@@ -109,7 +108,6 @@ const Home = (props) => {
                                             </IconButton>
                                         </InputAdornment>
                                         }
-                                        // label="Password"
                                         sx = {{width: 400}}
                                         focused
                                     />
