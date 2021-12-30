@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './components/UI/Theme';
+import  theme  from './components/UI/Theme';
 
 ReactDOM.render(
   <React.StrictMode>
