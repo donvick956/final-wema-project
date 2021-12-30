@@ -1,6 +1,6 @@
 const Error = () => {
     return (<div>
-        Error Works!
+        Error Works!!!!
     </div>)
 }
 export default Error;
