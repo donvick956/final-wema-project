@@ -26,9 +26,13 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
       },
       loginImg:{
           maxWidth: '100%',
-          width: '700px',
-          height:'650px',
+          width: '100%',
+          height:'1000px',
           backgroundImage: `url(${login})`,
+          backgroundPosition:'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize:'cover'
       },
       borderInput: {
           borderColor: theme.palette.primary.main
@@ -89,7 +93,7 @@ const Home = (props) => {
 
     const classCust = useStyle();
     return (<div>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }} style = {{height: '100vh', overflowY: 'hidden'}}>
             <Grid container rowSpacing={3}>
                 <Grid item xs = {12} md = {6} className={classCust.loginImg} >
                     <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
