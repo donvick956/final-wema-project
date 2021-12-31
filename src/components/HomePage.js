@@ -128,7 +128,7 @@ const Home = (props) => {
                         </article>
                     </div>
                 </Grid>
-                <Grid container item xs = {12} md = {6} style = {{marginTop:'50px',height:'100vh'}}>
+                <Grid container item xs = {12} md = {6} style = {{marginTop:'50px', height:'100vh'}}>
                     <div style = {{display: 'flex', justifyContent: 'center', width:'100%'}}>
                         <div style = {{marginLeft:'20px'}}>
                             <h3 className={classCust.textCenter} >Go to XMT Website</h3>
