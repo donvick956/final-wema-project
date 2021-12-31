@@ -1,0 +1,17 @@
+.button-home{
+    background-color: #AB051D;
+    color: #EBD7E9;
+    border-radius: 2px;
+    border-style: none;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-top: 2em;
+    display: flex;     
+}
+
+.error-404{
+    margin-top: 40rem;
+    display: flex;
+    justify-content: center;    
+}
