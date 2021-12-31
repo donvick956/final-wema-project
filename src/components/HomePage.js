@@ -27,12 +27,12 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
       loginImg:{
           maxWidth: '100%',
           width: '100%',
-          height:'1000px',
+          minHeight:'100vh',
           backgroundImage: `url(${login})`,
-          backgroundPosition:'center',
+        //   backgroundPosition:'center',
           backgroundAttachment: 'fixed',
           backgroundRepeat: 'no-repeat',
-          backgroundSize:'cover'
+        //   backgroundSize:'cover'
       },
       borderInput: {
           borderColor: theme.palette.primary.main
@@ -47,6 +47,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
       },
       inputField: {
           border: `2px solid ${theme.palette.primary.main}`,
+      },
+      gridBox:  {
+          [theme.breakpoints.down('md')]: {
+              height:'100vh'
+          }
       }
   }));
 const Home = (props) => {
@@ -93,30 +98,32 @@ const Home = (props) => {
 
     const classCust = useStyle();
     return (<div>
-        <Box sx={{ flexGrow: 1 }} style = {{height: '100vh', overflowY: 'hidden'}}>
-            <Grid container rowSpacing={3}>
-                <Grid item xs = {12} md = {6} className={classCust.loginImg} >
-                    <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
-                        <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
+        <Box className={classCust.gridBox}>
+            <Grid container rowSpacing={3} style = {{ height: '500px'}}>
+                <Grid item xs = {12} md = {6} className={classCust.loginImg} style = {{display:'flex', justifyContent:'center', alignItems:'start'}}>
+                    <div>                        
+                        <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
+                            <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
+                        </div>
+                        <article style = {{marginTop:'150px', padding: '20px'}}>
+                            <div style = {{marginTop:30}}>
+                                <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
+                            </div><br />
+                            <div>
+                                <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an ALAT account from your phone with your BVN and phone 
+                                number, no paperwork required.
+                                </Typography>
+                            </div>
+                            <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
+                                <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
+                            </div>
+                            <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px', width: '100%'}}>
+                                <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
+                                <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
+                                <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
+                            </div>
+                        </article>
                     </div>
-                    <article style = {{marginTop:'150px', padding: '20px'}}>
-                        <div style = {{marginTop:30}}>
-                            <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
-                        </div><br />
-                        <div>
-                            <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an ALAT account from your phone with your BVN and phone 
-                            number, no paperwork required.
-                            </Typography>
-                        </div>
-                        <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
-                            <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
-                        </div>
-                        <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px', width: '100%'}}>
-                            <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
-                            <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
-                            <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
-                        </div>
-                    </article>
                 </Grid>
                 <Grid container item xs = {12} md = {6} style = {{marginTop:'50px'}}>
                     <div style = {{display: 'flex', justifyContent: 'center', width:'100%'}}>
