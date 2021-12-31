@@ -6,8 +6,13 @@ import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
+import menuLogo from '../assets/official-logo.png';
+import instagram from '../assets/instagram.png';
+import twitter from '../assets/twitter.png';
+import facebook from '../assets/facebook.png'
+import Typography from '@mui/material/Typography';
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
@@ -21,8 +26,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
       loginImg:{
           maxWidth: '100%',
           width: '700px',
-          height:'100vh',
-          backgroundImage: login
+          height:'650px',
+          backgroundImage: `url(${login})`,
       },
       borderInput: {
           borderColor: theme.palette.primary.main
@@ -44,7 +49,11 @@ const Home = (props) => {
         password: '',
         showPassword: false,
       });
+    const [email,setEmail] = useState('');
+    const [passwordError,setPasswordError] = useState(false);
+    const [emailError,setEmailError] = useState(false);
     
+
       const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
       };
@@ -59,61 +68,106 @@ const Home = (props) => {
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
+
+      const handleEmail = (e) => {
+          setEmail(e.target.value);
+      }
+      const handleSubmit = (e) => {
+          e.preventDefault();
+        //   dispatch action
+        if (values.password === '' ) {
+             setPasswordError(!passwordError);
+        }
+        if (email === '' ) {
+             setEmailError(!emailError);
+        }
+      }
+
     const classCust = useStyle();
     return (<div>
         <Box sx={{ flexGrow: 1 }}>
             <Grid container rowSpacing={3}>
-                <Grid container item xs = {12} md = {6} className='loginImg'>
-                    {/* <div>
-                        <img src={login} alt="login-image" md= {6} className={classCust.loginImg}/>
-                    </div> */}
+                <Grid item xs = {12} md = {6} className={classCust.loginImg} >
+                    <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
+                        <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
+                    </div>
+                    <article style = {{marginTop:'150px', padding: '20px'}}>
+                        <div style = {{marginTop:30}}>
+                            <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
+                        </div><br />
+                        <div>
+                            <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an ALAT account from your phone with your BVN and phone 
+                            number, no paperwork required.
+                            </Typography>
+                        </div>
+                        <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
+                            <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
+                        </div>
+                        <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px'}}>
+                            <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
+                            <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
+                            <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
+                        </div>
+                    </article>
                 </Grid>
-                <Grid container item xs = {12} md = {6}>
-                        <div>
-                        <h3 className={classCust.textCenter} >Go to XMT Website</h3>
-                        <p>Welcome Back!</p>
-                        <div>
-                            <form >
-                                <div>
-                                    <p>
-                                        Email Address/Username
-                                    </p>
-                                    <TextField id="outlined-basic" 
-                                    // label="Outlined" 
-                                    // variant="outlined" 
-                                    sx = {{width: 400,}} focused />
-                                </div>
-                                <div>
-                                    <div >
-                                        <span>Password</span>
-                                        <span className={classCust.pinkColor}>Forgot Password?</span>
+                <Grid container item xs = {12} md = {6} style = {{marginTop:'50px'}}>
+                    <div style = {{display: 'flex', justifyContent: 'center', width:'100%'}}>
+                        <div style = {{marginLeft:'20px'}}>
+                            <h3 className={classCust.textCenter} >Go to XMT Website</h3>
+                            <p style = {{marginLeft:'20px'}}>Welcome Back!</p>
+                            <div>
+                                <form  onSubmit={handleSubmit}>
+                                    <div>
+                                        <p>
+                                            Email Address/Username
+                                        </p>
+                                        <TextField 
+                                        id="outlined-basic" 
+                                        sx = {{width: 400,}} focused
+                                        onChange = {handleEmail} />
+                                        <div>
+                                        {emailError && <Typography variant = 'em' 
+                                        style = {{color:'red'}}>Email/Username cannot be empty
+                                        </Typography>}
+                                        </div>
                                     </div>
-                                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined"/>
-                                    <div></div>
-                                    <TextField
-                                        id="outlined-adornment-password"
-                                        type={values.showPassword ? 'text' : 'password'}
-                                        value={values.password}
-                                        className = {classCust.inputField}                                   
-                                        onChange={handleChange('password')}
-                                        endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                            >
-                                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                        }
-                                        sx = {{width: 400}}
-                                        focused
-                                    />
-                                </div>
-                                <Button variant="contained" sx = {{width:'100%', marginTop:'20px'}}>Login</Button>
-                            </form>
+                                    <div>
+                                        <div style = {{marginTop:'20px'}} >
+                                            <span>Password</span>
+                                            <span className={classCust.pinkColor}>Forgot Password?</span>
+                                        </div>
+                                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined"/>
+                                        <div></div>
+                                        <TextField
+                                            id="outlined-adornment-password"
+                                            type={values.showPassword ? 'text' : 'password'}
+                                            value={values.password}
+                                            className = {classCust.inputField}                                   
+                                            onChange={handleChange('password')}
+                                            endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                                >
+                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                            }
+                                            sx = {{width: 400}}
+                                            focused
+                                        />
+                                        <div>
+                                        {passwordError && <Typography variant = 'em' 
+                                        style = {{color:'red'}}>Password cannot be empty
+                                        </Typography>}
+                                        </div>
+                                    </div>
+                                    <Button variant="contained" sx = {{width:'100%', marginTop:'50px'}} type ='submit'>Login</Button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </Grid>

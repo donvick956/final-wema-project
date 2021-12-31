@@ -1,4 +1,3 @@
-import { NoEncryption } from '@mui/icons-material';
 import { createTheme } from '@mui/material/styles';
 const wine = '#AB051D'
 const theme = createTheme({
@@ -11,12 +10,25 @@ const theme = createTheme({
       }
     },
     
-     MuiInput:  {
+    typography: {
+        h4: {
+            margin:'0px'
+        },
+
+        span: {
+            margin: '0px'
+        },
+        button: {
+            textTransform: "none",
+            color:wine
+          }
+    },
+    MuiInput:  {
         MuiOutlinedInput:{
              border:'none',
-             "&:hover":{
-                 border:'none'
-             }
+            //  "&:hover":{
+            //      border:'none'
+            //  }
         }
     }
   });
