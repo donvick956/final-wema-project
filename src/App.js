@@ -4,7 +4,7 @@ import Home from './components/HomePage';
 import Error from './components/ErrorPage';
 
 
-function App() {
+function App() { 
   return (
     <Routes>
       <Route path = '/'  element = {<Home/>} />
