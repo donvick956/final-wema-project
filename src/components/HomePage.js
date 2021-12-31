@@ -110,7 +110,7 @@ const Home = (props) => {
                                 <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
                             </div><br />
                             <div>
-                                <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an ALAT account from your phone with your BVN and phone 
+                                <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an XMT account from your phone with your BVN and phone 
                                 number, no paperwork required.
                                 </Typography>
                             </div>
