@@ -11,6 +11,7 @@ import instagram from '../assets/instagram.png';
 import twitter from '../assets/twitter.png';
 import facebook from '../assets/facebook.png'
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -52,6 +53,8 @@ const Home = (props) => {
     const [email,setEmail] = useState('');
     const [passwordError,setPasswordError] = useState(false);
     const [emailError,setEmailError] = useState(false);
+    const navigate = useNavigate();
+
     
 
       const handleChange = (prop) => (event) => {
@@ -81,6 +84,7 @@ const Home = (props) => {
         if (email === '' ) {
              setEmailError(!emailError);
         }
+        navigate('/welcome');
       }
 
     const classCust = useStyle();
@@ -103,7 +107,7 @@ const Home = (props) => {
                         <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
                             <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
                         </div>
-                        <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px'}}>
+                        <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px', width: '100%'}}>
                             <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
                             <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
                             <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
