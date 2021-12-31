@@ -105,7 +105,7 @@ const Home = (props) => {
         <Box className={classCust.gridBox}>
             <Grid container rowSpacing={3} style = {{ height: '500px'}}>
                 <Grid item xs = {12} md = {6} className={classCust.loginImg} style = {{display:'flex', justifyContent:'center', alignItems:'start'}}>
-                    <div>                        
+                    <div style = {{marginTop:'50px'}}>                        
                         <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
                             <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
                         </div>
@@ -129,7 +129,7 @@ const Home = (props) => {
                     </div>
                 </Grid>
                 <Grid container item xs = {12} md = {6} style = {{marginTop:'50px', height:'100vh'}}>
-                    <div style = {{display: 'flex', justifyContent: 'center', width:'100%'}}>
+                    <div style = {{display: 'flex', justifyContent: 'center', width:'100%', marginTop:'50px'}}>
                         <div style = {{marginLeft:'20px'}}>
                             <h3 className={classCust.textCenter} >Go to XMT Website</h3>
                             <p style = {{marginLeft:'20px'}}>Welcome Back!</p>
