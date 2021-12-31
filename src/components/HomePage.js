@@ -105,7 +105,7 @@ const Home = (props) => {
                         <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
                             <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
                         </div>
-                        <article style = {{marginTop:'150px', padding: '20px'}}>
+                        <article style = {{marginTop:'150px', padding: '30px'}}>
                             <div style = {{marginTop:30}}>
                                 <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
                             </div><br />
