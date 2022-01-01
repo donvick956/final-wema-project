@@ -27,12 +27,13 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
       loginImg:{
           maxWidth: '100%',
           width: '100%',
-          minHeight:'100vh',
+          maxHeight:'100vh',
+          height:'1000px',
           backgroundImage: `url(${login})`,
-        //   backgroundPosition:'center',
+          backgroundPosition:'center',
           backgroundAttachment: 'fixed',
           backgroundRepeat: 'no-repeat',
-        //   backgroundSize:'cover'
+          backgroundSize:'cover'
       },
       borderInput: {
           borderColor: theme.palette.primary.main
@@ -49,7 +50,10 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
           border: `2px solid ${theme.palette.primary.main}`,
       },
       gridBox:  {
-          [theme.breakpoints.down('md')]: {
+        //   display:'flex',
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+          [theme.breakpoints.up('md')]: {
               height:'100vh'
           }
       }
@@ -101,23 +105,22 @@ const Home = (props) => {
         <Box className={classCust.gridBox}>
             <Grid container rowSpacing={3} style = {{ height: '500px'}}>
                 <Grid item xs = {12} md = {6} className={classCust.loginImg} style = {{display:'flex', justifyContent:'center', alignItems:'start'}}>
-                    <div>                        
+                    <div style = {{marginTop:'50px'}}>                        
                         <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
                             <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
                         </div>
-                        <article style = {{marginTop:'150px', padding: '20px'}}>
+                        <article style = {{marginTop:'150px', padding: '30px'}}>
                             <div style = {{marginTop:30}}>
                                 <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
                             </div><br />
                             <div>
-                                <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Open an XMT account from your phone with your BVN and phone 
-                                number, no paperwork required.
+                                <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Send money to multiple Accounts with one CLICK...no paperwork required.
                                 </Typography>
                             </div>
                             <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
                                 <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
                             </div>
-                            <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'30px', width: '100%'}}>
+                            <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'80px', width: '100%'}}>
                                 <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
                                 <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
                                 <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
@@ -126,7 +129,7 @@ const Home = (props) => {
                     </div>
                 </Grid>
                 <Grid container item xs = {12} md = {6} style = {{marginTop:'50px', height:'100vh'}}>
-                    <div style = {{display: 'flex', justifyContent: 'center', width:'100%'}}>
+                    <div style = {{display: 'flex', justifyContent: 'center', width:'100%', marginTop:'50px'}}>
                         <div style = {{marginLeft:'20px'}}>
                             <h3 className={classCust.textCenter} >Go to XMT Website</h3>
                             <p style = {{marginLeft:'20px'}}>Welcome Back!</p>

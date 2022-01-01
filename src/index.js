@@ -8,11 +8,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import  theme  from './components/UI/Theme';
 import { Provider as ReactProvider } from 'react-redux';
 import { configStore } from './redux/store/store';
+import { history } from './History';
 const store = configStore();
 
 ReactDOM.render(
   <ReactProvider store = {store}>
-    <React.StrictMode>
+    <React.StrictMode history = {history}>
       <BrowserRouter>
       <ThemeProvider theme = {theme}>
         <App />
