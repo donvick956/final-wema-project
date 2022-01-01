@@ -1,7 +1,7 @@
 import "./Error.css";
-import { NavLink } from 'react-router-dom';
 import ErrorPic from '../assets/ErrorPic.png';
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
+import { history } from "../History";
 
 
 const Error = () => {
@@ -11,7 +11,7 @@ const Error = () => {
                         <img src={ErrorPic} alt="error"  width='100%' height = '500px'/>
                     </>
                     <div style={{display:'flex', justifyContent: 'center'}} >
-                        <Button  color ='primary' component = {NavLink} to = '/' variant ="contained" style = {{textTransform:'none', textDecoration:'none'}} disableRipple>Go Home</Button>
+                        <Button  color ='primary' variant ="contained" style = {{textTransform:'none', textDecoration:'none'}} disableRipple onClick={history.back}>Go Home</Button>
                     </div>
                 </div>
             </div>);
