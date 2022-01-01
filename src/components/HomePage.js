@@ -12,6 +12,8 @@ import twitter from '../assets/twitter.png';
 import facebook from '../assets/facebook.png'
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../redux/action/action';
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -67,6 +69,7 @@ const Home = (props) => {
     const [passwordError,setPasswordError] = useState(false);
     const [emailError,setEmailError] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     
 
@@ -97,6 +100,7 @@ const Home = (props) => {
         if (email === '' ) {
              setEmailError(!emailError);
         }
+        dispatch(loginAction({email:email,password:values.password}))
         navigate('/welcome');
       }
 
@@ -162,7 +166,7 @@ const Home = (props) => {
                                             value={values.password}
                                             className = {classCust.inputField}                                   
                                             onChange={handleChange('password')}
-                                            endAdornment={
+                                            enddornment={
                                             <InputAdornment position="end">
                                                 <IconButton
                                                 aria-label="toggle password visibility"

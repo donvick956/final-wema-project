@@ -7,6 +7,6 @@ export const reducer = (state = [],action) => {
         case LOG_OUT_ACTION_SUCCESS:
             return [...state, {...action.payload}];
         default:
-            return state
+            return state;
     }
 }
