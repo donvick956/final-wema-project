@@ -9,15 +9,14 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useScrollTrigger } from "@mui/material";
 
+
 import { logOutAction } from "../redux/action/action";
-import Error from "./ErrorPage";
-import Home from "./HomePage";
 
 function ElevationScroll(props) {
     const { children} = props;
