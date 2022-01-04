@@ -1,19 +1,27 @@
-import { takeLatest,call } from "redux-saga/effects"
-import { LOGIN_ACTION, LOGIN_ACTION_SUCCESS } from "../redux/action/action"
+import { takeLatest,put, call } from "redux-saga/effects";
+import { LOGIN_ACTION,loginActionSuccess,LOG_OUT_ACTION,logOutActionSuccess  } from "../redux/action/action";
+import { sessionService } from 'redux-react-session';
+
 export const mySaga = function* () {
     yield takeLatest(LOGIN_ACTION,logInWatcher);
+    yield takeLatest(LOG_OUT_ACTION,logOutWatcher);
 }
+
 function* logInWatcher (action) {
-    yield call(apiFecther,action);
+    yield put(loginActionSuccess (action.payload));
+    yield call(logInActionSession,action.payload);
 }
-const apiFecther = (action) => {
-    console.log(action.payload);
-   return fetch('https://localhost:44322/Customers/login',{
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(action.payload)
-}).then(response => console.log(response)).catch(e => console.error(e,'i caught the error'));
+
+function* logOutWatcher (action) {
+    yield put(logOutActionSuccess (action.payload));
+    yield call(logOutActionSession,action.payload);
+}
+
+function* logInActionSession(payload) {
+    yield sessionService.saveSession();
+    yield sessionService.saveUser(payload);
+}
+function* logOutActionSession() {
+    yield sessionService.deleteSession();
+    yield sessionService.deleteUser();
 }

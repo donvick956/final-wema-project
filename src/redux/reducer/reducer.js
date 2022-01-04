@@ -5,7 +5,7 @@ export const reducer = (state = [],action) => {
         case LOGIN_ACTION_SUCCESS:
             return [...state, {...action.payload}];
         case LOG_OUT_ACTION_SUCCESS:
-            return [...state, {...action.payload}];
+            return [{...action.payload}];
         default:
             return state;
     }
