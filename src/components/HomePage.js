@@ -23,7 +23,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-// import { padding } from '@mui/system';
 
   const useStyle = makeStyles(theme => ({
       textCenter: {
@@ -65,8 +64,9 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
         //   alignItems: 'center',
         height:200,
         width:'100%',
+        opacity: 1.5,
           [theme.breakpoints.down('md')]: {
-              backgroundColor:`${theme.palette.primary.main}`
+              backgroundColor:`${theme.palette.primary.main}`,
           }
       },
       wrapper: {
@@ -140,7 +140,7 @@ const Home = (props) => {
         }
         if(data){ 
             let user = JSON.parse(data);
-            let validData = user.filter(val => val.customerEmail === email);
+            let validData = user.filter(val => val.email === email);
             console.log(validData);
             if(validData.length > 0){
                 dispatch(loginAction(...validData));

@@ -56,7 +56,7 @@ function ElevationScroll(props) {
             zIndex: theme.zIndex.appBar
         }, 
         toolbarMargin: {
-            marginTop: '50px'
+            marginTop: '20px'
         } 
       }
   ));
@@ -80,6 +80,20 @@ const Welcome = (props) => {
                     classes={{paper:classes}}
                      >
                          <div className ={classes.toolbarMargin} />
+                        <List disablePadding>
+                            <ListItem divider button>
+                                <ListItemText disableTypography className={classes.drawerItem}>SERVICES</ListItemText>
+                            </ListItem>
+                        </List>
+                        <List disablePadding>
+                            <ListItem divider button
+                             onClick={() => {setOpenDrawer(false); setValue(0)}}
+                             component={Link}
+                             to ='/welcome'
+                             selected ={value === 0 && window.location.pathname ==='/welcome'}>
+                                <ListItemText disableTypography className={classes.drawerItem}>Dashboard</ListItemText>
+                            </ListItem>
+                        </List>
                         <List disablePadding>
                             <ListItem divider button
                              onClick={() => {setOpenDrawer(false); setValue(1)}}
@@ -107,7 +121,7 @@ const Welcome = (props) => {
                     </>)
 
     useEffect(() => {
-        if( window.location.pathname ==='/welcome' && user.length < 1 )    {
+        if( window.location.pathname ==='/welcome' && user.length === 0 )    {
             console.log('second');
             return navigate('/');
         }
@@ -115,7 +129,7 @@ const Welcome = (props) => {
 
     const handleLogOut = () => {
         dispatch(logOutAction({email:'', password:''}));
-        return navigate('/')
+        return navigate('/');
     }
     return (<div>
         {/* app bar */}
