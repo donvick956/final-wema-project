@@ -14,6 +14,8 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useScrollTrigger } from "@mui/material";
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import  { makeStyles } from '@mui/styles';
 
 
 import { logOutAction } from "../redux/action/action";
@@ -29,6 +31,15 @@ function ElevationScroll(props) {
       elevation: trigger ? 4 : 0,
     });
   }
+  const styles = makeStyles(theme => (
+      {
+          drawer : {
+              "&:hover": {
+                  backgroundColor: "transparent"
+              }
+          }
+      }
+  ))
 
 const Welcome = () => {
     const user = useSelector(state => state.reducer);
@@ -36,11 +47,18 @@ const Welcome = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const classes = styles();
     const [openDrawer, setOpenDrawer] = useState(false);
     const iOS =typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
-    // const drawer = (<>
-                    
-    //                 </>)
+    const drawer = (<>
+                    <SwipeableDrawer disableBackdropTransition={!iOS} 
+                    disableDiscovery={iOS}
+                    open = {openDrawer}
+                    onClose = {() => setOpenDrawer(false)}
+                    onOpen = {() => setOpenDrawer(true)} >
+                        Example Drawer
+                     </SwipeableDrawer>   
+                    </>)
 
     useEffect(() => {
         if( window.location.pathname ==='/welcome' && user.length < 1 )    {
@@ -66,10 +84,13 @@ const Welcome = () => {
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
+                        disableRipple
+                        className={classes.drawer}
+                        onClick = {() => setOpenDrawer(!openDrawer)}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button disableRipple><img src={App} alt="app logo"  style={{width:'3rem', height:'3rem', padding:'0px'}} /></Button>
+                    <Button disableRipple style={{marginLeft:30}}><img src={App} alt="app logo"  style={{width:'3rem', height:'3rem', padding:'0px'}} /></Button>
                     <div style = {{marginLeft:'auto', display: 'flex', justifyContent:"space-evenly", alignItems:'center'}}>
                         { user.length >= 1 && <Typography variant="h6" component="div" sx= {{marginRight:5}}>
                             {user[0].firstName} 
@@ -79,6 +100,7 @@ const Welcome = () => {
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
+            {drawer}
         </Box>
         <Outlet />
     </div>);
