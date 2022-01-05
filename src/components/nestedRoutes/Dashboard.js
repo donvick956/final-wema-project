@@ -60,7 +60,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item>
+                        <Grid item alignItems='flex-end'>
                             { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>Account Number: {user[0].accountNumber}</Typography>}
                         </Grid>
                     </Grid>
