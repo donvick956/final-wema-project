@@ -7,7 +7,13 @@ const theme = createTheme({
       },
       secondary: {
           main : '#fff'
+      },
+      background:{
+        paper:wine
       }
+    },
+    zIndex:{
+      appBar:2000
     },
     
     typography: {
@@ -30,6 +36,7 @@ const theme = createTheme({
             //      border:'none'
             //  }
         }
-    }
+    },
+
   });
 export default theme;
