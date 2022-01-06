@@ -63,7 +63,6 @@ function ElevationScroll(props) {
 
 const Welcome = (props) => {
     const user = useSelector(state => state.reducer);
-    const [value, setValue] = useState(0);
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -87,28 +86,28 @@ const Welcome = (props) => {
                         </List>
                         <List disablePadding>
                             <ListItem divider button
-                             onClick={() => {setOpenDrawer(false); setValue(0)}}
+                             onClick={() => {setOpenDrawer(false); props.setValue(0)}}
                              component={Link}
                              to ='/welcome'
-                             selected ={value === 0 && window.location.pathname ==='/welcome'}>
+                             selected ={props.value === 0 && window.location.pathname ==='/welcome'}>
                                 <ListItemText disableTypography className={classes.drawerItem}>Dashboard</ListItemText>
                             </ListItem>
                         </List>
                         <List disablePadding>
                             <ListItem divider button
-                             onClick={() => {setOpenDrawer(false); setValue(1)}}
+                             onClick={() => {setOpenDrawer(false); props.setValue(1)}}
                              component={Link}
                              to ='/welcome/beneficiary'
-                             selected ={value ===1 && window.location.pathname ==='/welcome/beneficiary'}>
+                             selected ={props.value ===1 && window.location.pathname ==='/welcome/beneficiary'}>
                                 <ListItemText disableTypography className={classes.drawerItem}>Save Beneficiary</ListItemText>
                             </ListItem>
                         </List>
                         <List>
                             <ListItem divider button
-                             onClick={() => {setOpenDrawer(false); setValue(2)}}
+                             onClick={() => {setOpenDrawer(false); props.setValue(2)}}
                              component={Link}
                              to ='/welcome/multiple'
-                             selected ={value === 2 && window.location.pathname ==='/welcome/multiple'}>
+                             selected ={props.value === 2 && window.location.pathname ==='/welcome/multiple'}>
                                 <ListItemText disableTypography className={classes.drawerItem}>Multiple Transfer</ListItemText>
                             </ListItem>
                         </List>

@@ -1,19 +1,22 @@
 import "./Error.css";
 import ErrorPic from '../assets/ErrorPic.png';
 import Button from '@mui/material/Button';
-import { history } from "../History";
+// import { history } from "../History";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
 const Error = () => {
     const user = useSelector(state => state.reducer);
+    console.log(user);
     const navigate = useNavigate();
+     
     const handleClick = () => {
-        console.log(history.back);
         if(user.length > 0)    {
-            return history.back;
-        }else {
+            console.log('work')
+            return navigate(-1);
+        }
+        else {
             return navigate('/');
         }
     }

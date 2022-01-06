@@ -8,15 +8,15 @@ import { ThemeProvider } from '@mui/material/styles';
 import  theme  from './components/UI/Theme';
 import { Provider as ReactProvider } from 'react-redux';
 import { configStore } from './redux/store/store';
-import { history } from './History';
+// import { history } from './History';
 const store = configStore();
 
 ReactDOM.render(
   <ReactProvider store = {store}>
-    <React.StrictMode history = {history}>
+    <React.StrictMode >
       <BrowserRouter>
-      <ThemeProvider theme = {theme}>
-        <App />
+      <ThemeProvider theme = {theme} >
+        <App  />
       </ThemeProvider>
       </BrowserRouter>
     </React.StrictMode>

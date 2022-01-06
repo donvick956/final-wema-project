@@ -11,7 +11,7 @@ export const configStore = (initialState) => {
     const store = createStore(reducers,
                 initialState,
                 composeEnhancer(applyMiddleware(...middleware)));
-    sessionService.initSessionService(store, {refreshOnCheckAuth: true, driver: 'LOCALSTORAGE' });
+    sessionService.initSessionService(store, {refreshOnCheckAuth: true, driver:'LOCALSTORAGE'});
     sagaMidddleware.run(rootSaga);
     return store;
 }

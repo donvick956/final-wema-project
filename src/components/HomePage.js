@@ -55,13 +55,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
           color: '#F62658',
           marginLeft: '200px'
       },
-    //   inputField: {
-    //       border: `2px solid ${theme.palette.primary.main}`,
-    //   },
       gridBox:  {
-        //   display:'flex',
-        //   justifyContent: 'center',
-        //   alignItems: 'center',
         height:200,
         width:'100%',
         opacity: 1.5,
@@ -74,16 +68,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
           gridTemplateColumns:`auto auto`,
           gridColumnGap:'10px'
       },
-    //   loginForm:{
-    //     [theme.breakpoints.down('xs')]: {
-    //         width:'50%',
-    //       }
-    //   }
   }));
 const Home = (props) => {
     const [values, setValues] = useState({
         password: '',
-        showPassword: false,
+        showPassword: false
       });
     const [email,setEmail] = useState('');
     const [passwordError,setPasswordError] = useState(false);
@@ -92,7 +81,6 @@ const Home = (props) => {
     const [warning,setWarning] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const vh = useVH();
 
 
     useEffect(() => {

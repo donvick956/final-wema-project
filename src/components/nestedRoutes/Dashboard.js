@@ -13,16 +13,15 @@ import multiple from '../../assets/Multiple.svg';
 import mail from '../../assets/XMLID_1_.svg';
 import tangle from '../../assets/Vector-1.svg';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const [time,setTime] = useState('');
-    const [value, setValue] = useState();
     const navigate = useNavigate();
     const user = useSelector(state => state.reducer);
 
     useEffect(() => {
         const greeting = () => {
             console.log(user);
-            if( window.location.pathname ==='/welcome' && user.length  === 0 )    {
+            if( window.location.pathname ==='/welcome/dashboard' && user.length  === 0 )    {
                 return navigate('/');
             }
             // get time
@@ -40,7 +39,7 @@ const Dashboard = () => {
     
         }
         greeting();
-    }, []);
+    }, [navigate, user]);
     return ( <>
         <Container>
             {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Good {time},{user[0].firstName}</Typography>}
@@ -71,14 +70,14 @@ const Dashboard = () => {
                  <Grid container style={{marginTop:10}}>
                     <Grid item md = {6} xs = {12}>
                         <div style = {{display:'flex',justifyContent:'sapce-between', marginTop:10}}>
-                            <img src={multiple} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/multiple' onClick={() => setValue(2)}/>
-                            <Typography color="primary" style = {{marginLeft:10,textDecoration:'none'}} component = {Link} to = '/welcome/multiple' onClick={() => setValue(2)}>Multiple Transfer</Typography>
+                            <img src={multiple} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/multiple' onClick={() => props.setValue(2)}/>
+                            <Typography color="primary" style = {{marginLeft:10,textDecoration:'none'}} component = {Link} to = '/welcome/multiple' onClick={() => props.setValue(2)}>Multiple Transfer</Typography>
                         </div>
                     </Grid>
                     <Grid item md = {6} xs = {12}>
                         <div style = {{display:'flex',justifyContent:'sapce-between',marginTop:10}}>
-                            <img src={money} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/beneficiary' onClick={() => setValue(1)}/>
-                            <Typography color="primary" style = {{marginLeft:10,textDecoration:'none'}} component = {Link} to = '/welcome/beneficiary' onClick={() => setValue(1)}>Save Beneficiary</Typography>
+                            <img src={money} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/beneficiary' onClick={() => props.setValue(1)}/>
+                            <Typography color="primary" style = {{marginLeft:10,textDecoration:'none'}} component = {Link} to = '/welcome/beneficiary' onClick={() => props.setValue(1)}>Save Beneficiary</Typography>
                         </div>
                     </Grid>
                  </Grid>

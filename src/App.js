@@ -7,14 +7,16 @@ import Dashboard from  './components/nestedRoutes/Dashboard';
 import { Multiple } from './components/nestedRoutes/Multiple';
 import { Beneficiary } from './components/nestedRoutes/Beneficiary';
 import theme from './components/UI/Theme';
+import { useState } from 'react';
 
 
 function App() { 
+  const [value, setValue] = useState(0);
   return (
     <Routes>
       <Route path = '/'  element = {<Home/>} />
-      <Route exact path = '/welcome' theme = {theme} element = {<Welcome/>} >
-        <Route  path='' element={<Dashboard />}  />
+      <Route exact path = '/welcome' theme = {theme} element = {<Welcome theme = {theme} value = {value} setValue = {setValue}/>} >
+        <Route  path='' element={<Dashboard  value = {value} setValue = {setValue}/>}  />
         <Route  path='beneficiary' element={<Beneficiary />}  />
         <Route  path='multiple' element={<Multiple />}  />
       </Route>
