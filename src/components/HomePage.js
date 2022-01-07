@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 import { loginAction } from '../redux/action/action';
 import axios from "axios";
 // import useVH from 'react-viewport-height';
-
+ 
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -85,16 +85,16 @@ const Home = (props) => {
 
     useEffect(() => {
         async function fetchApi () {
-             ( await axios.get('https://localhost:44322/Customers')
+             ( await axios.get("https://localhost:44322/Customers")
              .then
             (response => (JSON.stringify(response.data.value))).then(response => setData(response)).catch
-            (error => console.log(error)));
+            (error => console.log(error,'error message')));
         }
         fetchApi();
         console.log(data);
     }, [])
 
-    
+     
       const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
       };
@@ -204,7 +204,7 @@ const Home = (props) => {
                                              value={values.password}
                                              className = {classCust.inputField}                                   
                                              onChange={handleChange('password')}
-                                             enddornment={
+                                             endAdornment={
                                              <InputAdornment position="end">
                                                  <IconButton
                                                  aria-label="toggle password visibility"

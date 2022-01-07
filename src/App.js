@@ -8,6 +8,7 @@ import { Multiple } from './components/nestedRoutes/Multiple';
 import { Beneficiary } from './components/nestedRoutes/Beneficiary';
 import theme from './components/UI/Theme';
 import { useState } from 'react';
+import BankForm from './components/nestedRoutes/BankForm';
 
 
 function App() { 
@@ -19,6 +20,7 @@ function App() {
         <Route  path='' element={<Dashboard  value = {value} setValue = {setValue}/>}  />
         <Route  path='beneficiary' element={<Beneficiary />}  />
         <Route  path='multiple' element={<Multiple />}  />
+        <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/>
       </Route>
       <Route path = '*'  element = {<Error/>} />
     </Routes>

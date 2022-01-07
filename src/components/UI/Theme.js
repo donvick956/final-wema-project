@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-const wine = '#AB2656'
+const wine = '#830053'
 const theme = createTheme({
     palette: {
       primary: {
