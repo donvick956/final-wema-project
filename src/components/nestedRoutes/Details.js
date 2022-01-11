@@ -89,12 +89,14 @@ export const Details = () => {
                     </TableContainer>
                 </Container>
                 <Container>
-                <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Total: {getTotal()}</Typography>
+                <Typography variant="body1" color ='primary' style =  {{marginLeft: 110, marginTop:50, fontSize:20}}>Total: {getTotal()}</Typography>
                 </Container>
                 <Container>
                     <Grid container style =  {{marginLeft: 90, marginTop:50}} >
                         <Grid item md= {12} xs ={12} justifyContent='center' alignItems = 'center'>
-                            <Button variant='contained' color = 'primary' onClick={handleOpen}>Proceed</Button>
+                            <div style ={{marginLeft:20}}>
+                                <Button variant='contained' color = 'primary' onClick={handleOpen}>Proceed</Button>
+                            </div>
                             <Modal
                                 open={open}
                                 onClose={handleClose}

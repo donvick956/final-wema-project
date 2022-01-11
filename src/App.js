@@ -10,6 +10,7 @@ import theme from './components/UI/Theme';
 import { useState } from 'react';
 import BankForm from './components/nestedRoutes/BankForm';
 import { Details } from './components/nestedRoutes/Details';
+import { Result } from './components/nestedRoutes/transResult';
 
 
 function App() { 
@@ -23,6 +24,7 @@ function App() {
         <Route  path='multiple' element={<Multiple />}  />
         <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/>
         <Route  path = 'details' element = {<Details/>}/>
+        <Route  path = 'result' element = {<Result/>}/>
       </Route>
       <Route path = '*'  element = {<Error/>} />
     </Routes>
