@@ -20,6 +20,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from "react-router-dom";
+import { detailAction, detailActionSuccess } from "../redux/action/action";
+import { createGroup, createGroupSuccess } from "../redux/action/transAction";
 
 
 
@@ -66,6 +68,9 @@ function ElevationScroll(props) {
 
 const Welcome = (props) => {
     const user = useSelector(state => state.reducer);
+    const localTransferState = useSelector(state => state.transfer);
+    const groupDetails = useSelector(state => state.transfer);
+    
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -131,6 +136,9 @@ const Welcome = (props) => {
 
     const handleLogOut = () => {
         dispatch(logOutAction({email:'', password:''}));
+        dispatch(createGroup({}));
+        dispatch(detailAction({}));
+        
         return navigate('/');
     }
     return (<div>

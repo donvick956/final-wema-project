@@ -55,17 +55,23 @@ export const Details = () => {
         setPin(event.target.value);
     }
     const handlePayment = async (event) => {
-        event.preventDefault();
-        if(Number(pin.length) === 4) {
-            setError(false);
-            console.log(pin);
-            let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
-            accountPin: pin.toString(), 
-            transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'))
-            console.log(response);
-            navigate(`/welcome/result/${response}`);
-        } else {
-            setError(true);
+        try{
+            event.preventDefault();
+            if(Number(pin.length) === 4) {
+                setError(false);
+                console.log(pin);
+                let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
+                accountPin: pin.toString(), 
+                transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'));
+                console.log(response);
+                navigate(`/welcome/result/${response}`);
+            } else {
+                setError(true);
+            }
+        }
+        catch(error) {
+            console.error(error);
+            navigate('/welcome');
         }
     }
 
@@ -88,7 +94,7 @@ export const Details = () => {
                                 {multipleTransfer && multipleTransfer.map((val,key)  => <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                     <TableCell component="th" scope="row">
-                                        {key}
+                                        {key +1}
                                     </TableCell>
                                     <TableCell align="left">{val.receiverAccount}</TableCell>
                                     <TableCell align="left">{val.transactionAmount}</TableCell>

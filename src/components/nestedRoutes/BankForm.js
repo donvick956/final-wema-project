@@ -101,7 +101,7 @@ const BankForm = () => {
             }
         }
         async function bankName () {
-            return await axios.get('https://localhost:44322/Bank/get_banks').then(res =>{
+            return await axios.get('https://xmtapi.azurewebsites.net/Bank/get_banks').then(res =>{
             setOptions1(res.data);
             setOptions2(res.data);
             setOptions3(res.data);
@@ -180,7 +180,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber10.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber10}).then(response => (setAccountName10(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber10}).then(response => (setAccountName10(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -190,7 +190,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber9.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber9}).then(response => (setAccountName9(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber9}).then(response => (setAccountName9(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -200,7 +200,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber8.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber8}).then(response => (setAccountName8(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber8}).then(response => (setAccountName8(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -210,7 +210,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber1.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber1}).then(response => (setAccountName1(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber1}).then(response => (setAccountName1(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -219,7 +219,7 @@ const BankForm = () => {
         setSelected2(prevState => event.target.value);
         console.log(selected1);
         if(accountNumber2.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber2}).then(response => (setAccountName2(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber2}).then(response => (setAccountName2(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         // console.log(selected1);
     }
@@ -229,7 +229,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber3.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber3}).then(response => (setAccountName3(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber3}).then(response => (setAccountName3(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -239,7 +239,7 @@ const BankForm = () => {
         console.log(selected4);
         // console.log(setSelected1(event.target.value));
         if(accountNumber4.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber4}).then(response => (setAccountName4(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber4}).then(response => (setAccountName4(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -249,7 +249,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber5.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber5}).then(response => (setAccountName5(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber5}).then(response => (setAccountName5(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -259,7 +259,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber6.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber6}).then(response => (setAccountName6(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber6}).then(response => (setAccountName6(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -269,7 +269,7 @@ const BankForm = () => {
         console.log(selected1);
         // console.log(setSelected1(event.target.value));
         if(accountNumber7.length === 10) {
-        axios.post('https://localhost:44322/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber7}).then(response => (setAccountName7(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
+        axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:event.target.value, accountNumber:accountNumber7}).then(response => (setAccountName7(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
         }
         console.log(selected1);
     }
@@ -283,7 +283,7 @@ const BankForm = () => {
                     <Typography variant="body1" style =  {{marginLeft: 90,fontSize:20, marginTop:30}}>{placeholder}  ({(groupDetails.filter(val => val.group === placeholder))[0].receiver}/10)</Typography>
                 </Container>
                 <Container>
-                    <Grid container spacing = {0} rowSpacing={5} columnSpacing={6} direction="row" style ={{marginTop:20, fontSize:20, display:'flex', justifyContent:'center'}}>
+                    <Grid container spacing = {0} rowSpacing={4} columnSpacing={6} direction="row" style ={{marginTop:20, fontSize:20, display:'flex', justifyContent:'center'}}>
                          <Grid item md={6} xs = {12}>
                              {/* first form */}
                             {showForm1 && <div id = {1} ref = {colRef1}>

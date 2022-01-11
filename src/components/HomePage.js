@@ -90,7 +90,7 @@ const Home = (props) => {
     }, [])
 
     async function fetchApi () {
-         await axios.post("https://localhost:44322/Customers/login",{email:email, password:values.password})
+         await axios.post("https://xmtapi.azurewebsites.net/Customers/login",{email:email, password:values.password})
         .then
        (response => (JSON.stringify(response))).then(response => {
         console.log(response);   
@@ -169,7 +169,7 @@ const Home = (props) => {
                      </div>
             </div>
             <div className={classCust.loginForm}>
-            <div style = {{display: 'flex', justifyContent: 'center', width:'100%', marginTop:'50px', alignItems :'center'} }>
+            <div style = {{display: 'flex', justifyContent: 'center', width:'100%', marginTop:'80px', alignItems :'center'} }>
                         <div style = {{marginLeft:'0px'}}>
                             <h3 className={classCust.textCenter} >Go to XMT Website</h3>
                              <p style = {{marginLeft:'20px'}}>Welcome Back!</p>

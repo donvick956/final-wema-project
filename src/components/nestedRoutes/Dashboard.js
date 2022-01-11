@@ -12,15 +12,19 @@ import money from '../../assets/money.svg';
 import multiple from '../../assets/Multiple.svg';
 import mail from '../../assets/XMLID_1_.svg';
 import tangle from '../../assets/Vector-1.svg';
+import axios from "axios";
 
 const Dashboard = (props) => {
     const [time,setTime] = useState('');
     const navigate = useNavigate();
+    const [newUser,setNewUser] = useState([]);
+    const [displayUser,setDisplayUser] = useState([])
     const user = useSelector(state => state.reducer);
+
 
     useEffect(() => {
         const greeting = () => {
-            console.log(user);
+            // console.log(user);
             if( window.location.pathname ==='/welcome/dashboard' && user.length  === 0 )    {
                 return navigate('/');
             }
@@ -36,10 +40,20 @@ const Dashboard = (props) => {
             }else {
                 setTime('');
             }
-    
         }
+        const getUsers = async () => {
+            await axios.get('https://xmtapi.azurewebsites.net/Customers').then(res => setNewUser(res.data.value));
+            // console.log(newUser,'NEW USER') 
+       }
+       const getFreshUpdate = () => {
+        setDisplayUser(newUser.filter(val => val.email == user[0].email));
+       }
         greeting();
-    }, [navigate, user]);
+        getUsers();
+        getFreshUpdate();
+        // console.log(newUser, 'hereeee');
+    }, [navigate, user,newUser]);
+
     return ( <>
         <Container>
             {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Good {time},{user[0].firstName}</Typography>}
@@ -55,12 +69,12 @@ const Dashboard = (props) => {
                                 <Typography variant = 'p' style ={{color:'white'}}>Tier 3 Saving account</Typography>
                                 </div>
                                 <div>
-                               { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10}}>N {user[0].accountBalance}</Typography>}
+                               { displayUser.length && <Typography variant = 'span' style ={{color:'white', marginTop:10}}>N {displayUser[0].accountBalance}</Typography>}
                                 </div>
                             </div>
                         </Grid>
                         <Grid item alignItems='flex-end'>
-                            { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>Account Number: {user[0].accountNumber}</Typography>}
+                            { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>Account No: {user[0].accountNumber}</Typography>}
                         </Grid>
                     </Grid>
                  </div>

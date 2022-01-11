@@ -28,7 +28,8 @@ const styles = makeStyles(theme => (
             // border: `1px solid black`,
             borderRadius:10,
             // boxShadow:`0 3px 5px rgb(0 0 0 / 0.2)`,
-            cursor: 'pointer'
+            cursor: 'pointer',
+            color:'primary'
         }  
     }
 ));
@@ -74,7 +75,7 @@ export const Multiple = () => {
                              <Typography variant="h6" style =  {{marginLeft: 20, fontSize:13}}>No Group yet</Typography>
                         </Grid>}
                         {localTransferState && localTransferState.map((val,key) =><Grid item key={key} className={classes.groups} onClick = {handleGroupSelect}>
-                             <Typography variant="h6" style ={{marginLeft: 20, fontSize:13}}>{val.group}  ({val.receiver}/10)</Typography>
+                             <Typography color = 'primary' variant="h6" style ={{marginLeft: 20, fontSize:13}}>{val.group}  ({val.receiver}/10)</Typography>
                         </Grid>)}
                     </Grid>
                 </Grid>
