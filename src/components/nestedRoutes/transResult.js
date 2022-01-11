@@ -4,7 +4,8 @@ import { Button } from '@mui/material';
 import {useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 export const Result = () => {
     const {placeholder} = useParams();
     const navigate = useNavigate();
@@ -14,6 +15,13 @@ export const Result = () => {
     const handleClick  = () => {
         navigate(-1);
     }
+    const user = useSelector(state => state.reducer);
+    useEffect(() => {
+        if( window.location.pathname ==='/welcome/multiple' && user.length  === 0 )    {
+            return navigate('/');
+        }
+        
+    }, []);
     return <>
             <Container>
                     <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Transfer Details</Typography>

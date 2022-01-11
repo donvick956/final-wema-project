@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button } from '@mui/material';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
@@ -44,7 +44,13 @@ export const Details = () => {
     const multipleTransfer = useSelector(state => state.detail);
     console.log(multipleTransfer);
     let counter = 0;
-
+    const user = useSelector(state => state.reducer);
+    useEffect(() => {
+        if( window.location.pathname ==='/welcome/multiple' && user.length  === 0 )    {
+            return navigate('/');
+        }
+        
+    }, []);
     const getTotal = function () {
         for(let i  = 0;  i < multipleTransfer.length; i++) {
             counter+= multipleTransfer[i].transactionAmount;

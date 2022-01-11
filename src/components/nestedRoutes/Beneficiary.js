@@ -7,9 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import  { makeStyles } from '@mui/styles';
-
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 const styles = makeStyles(theme => (
     {
         selectRoot: {
@@ -41,6 +42,14 @@ export const Beneficiary = () => {
     'Wema Bank',
     'Zenith Bank'
     ];
+    const user = useSelector(state => state.reducer);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if( window.location.pathname ==='/welcome/multiple' && user.length  === 0 )    {
+            return navigate('/');
+        }
+        
+    }, []);
     const handleSelect = (e) => {
         setBank(e.target.value);
     }

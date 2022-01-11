@@ -7,7 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import  { makeStyles } from '@mui/styles';
 import { createGroup } from '../../redux/action/transAction';
 import { useDispatch } from 'react-redux';
@@ -34,12 +34,21 @@ const styles = makeStyles(theme => (
     }
 ));
 export const Multiple = () => {
+
     const [receiver,setReciver] = useState();
     const [group,setGroup] = useState();
     const classes = styles();
     const options = [2,3,4,5,6,7,8,9,10];
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const user = useSelector(state => state.reducer);
+    useEffect(() => {
+        if( window.location.pathname ==='/welcome/multiple' && user.length  === 0 )    {
+            return navigate('/');
+        }
+        
+    }, []);
+
     const handleGroupSelect = () => {
         navigate(`/welcome/bankForm/${group}`);
     }

@@ -92,7 +92,12 @@ const BankForm = () => {
 
 
     // console.log(groupDetails);
+    const user = useSelector(state => state.reducer);
+    
     useEffect(() => {
+        if( window.location.pathname ==='/welcome/multiple' && user.length  === 0 )    {
+            return navigate('/');
+        }
         function destGroup () {
             if(!placeholder || !groupDetails) {
                 return <Error/>
