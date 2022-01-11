@@ -84,17 +84,23 @@ const Home = (props) => {
 
 
     useEffect(() => {
-        async function fetchApi () {
-             ( await axios.get("https://localhost:44322/Customers")
-             .then
-            (response => (JSON.stringify(response.data.value))).then(response => setData(response)).catch
-            (error => console.log(error,'error message')));
-        }
-        fetchApi();
-        console.log(data);
+
+        // fetchApi();
+        // console.log(data);
     }, [])
 
-     
+    async function fetchApi () {
+         await axios.post("https://localhost:44322/Customers/login",{email:email, password:values.password})
+        .then
+       (response => (JSON.stringify(response))).then(response => {
+        console.log(response);   
+        setData(JSON.parse(response).data);
+        dispatch(loginAction(JSON.parse(response).data));
+        setWarning(false);
+        navigate('/welcome');
+       }).catch
+       (error => {console.log(error,'error message'); setWarning(true)})
+   }
       const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
       };
@@ -127,16 +133,11 @@ const Home = (props) => {
             setEmailError(false);
         }
         if(data){ 
-            let user = JSON.parse(data);
-            let validData = user.filter(val => val.email === email);
-            console.log(validData);
-            if(validData.length > 0){
-                dispatch(loginAction(...validData));
-                setWarning(false);
-                navigate('/welcome');
-            }else{
-                setWarning(true);
-            }
+            // let user = JSON.parse(data);
+            // let validData = user.filter(val => val.email === email);
+            // console.log(validData);
+            console.log(data);
+            fetchApi();
         }
       }
 
