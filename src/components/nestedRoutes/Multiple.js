@@ -27,7 +27,7 @@ const styles = makeStyles(theme => (
             padding: 20,
             // border: `1px solid black`,
             borderRadius:10,
-            boxShadow:`0 3px 5px rgb(0 0 0 / 0.2)`,
+            // boxShadow:`0 3px 5px rgb(0 0 0 / 0.2)`,
             cursor: 'pointer'
         }  
     }
@@ -64,7 +64,7 @@ export const Multiple = () => {
         <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Multiple Transfer</Typography>
         </Container>
         <Container style =  {{marginTop:50, fontSize:20}} >
-            <Grid container direction = 'row' spacing={0}>
+            <Grid container direction = 'row' spacing={0} rowSpacing={5}>
                 <Grid  item md = {6} xs = {12}>
                     <Grid container direction='column' spacing = {3}>
                         <Grid item>

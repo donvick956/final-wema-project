@@ -1,0 +1,129 @@
+import Container from '@mui/material/Container';
+import { Grid, Typography } from '@mui/material';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'white',
+    border: '2px solid #fff',
+    boxShadow: 24,
+    p: 4,
+  };
+
+
+
+export const Details = () => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [error,setError] = useState(false);
+    const [pin, setPin] = useState('')
+
+    const multipleTransfer = useSelector(state => state.detail);
+    console.log(multipleTransfer);
+    let counter = 0;
+
+    const getTotal = function () {
+        for(let i  = 0;  i < multipleTransfer.length; i++) {
+            counter+= multipleTransfer[i].transactionAmount;
+        }
+        return counter;
+    }
+    const handlePin = (event) => {
+        setPin(event.target.value);
+    }
+    const handlePayment = async (event) => {
+        event.preventDefault();
+        if(Number(pin.length) === 4) {
+            setError(false);
+            // let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {transfers:multipleTransfer}).then(res => res).catch(err => console.error(err,'error on post request of transfer'))
+            // console.log(response);
+        } else {
+            setError(true);
+        }
+    }
+
+ return (<>
+                <Container>
+                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Transfer Details</Typography>
+                </Container>
+                <Container>
+                    <TableContainer style =  {{marginLeft: 100, marginTop:50}} >
+                        <Table sx={{ width: '700px' }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Serial Number</TableCell>
+                                    <TableCell>Account Number</TableCell>
+                                    <TableCell>Amount</TableCell>
+                                    <TableCell>Bank</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {multipleTransfer && multipleTransfer.map((val,key)  => <TableRow
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                    <TableCell component="th" scope="row">
+                                        {key}
+                                    </TableCell>
+                                    <TableCell align="left">{val.receiverAccount}</TableCell>
+                                    <TableCell align="left">{val.transactionAmount}</TableCell>
+                                    <TableCell align="left">{val.bank}</TableCell>
+                                </TableRow>)}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Container>
+                <Container>
+                <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Total: {getTotal()}</Typography>
+                </Container>
+                <Container>
+                    <Grid container style =  {{marginLeft: 90, marginTop:50}} >
+                        <Grid item md= {12} xs ={12} justifyContent='center' alignItems = 'center'>
+                            <Button variant='contained' color = 'primary' onClick={handleOpen}>Proceed</Button>
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2" style = {{textAlign:'center'}}>
+                                    Please enter your four digit pin
+                                </Typography>
+                                <div style ={{display:'flex',justifyContent:'center'}}>
+                                <TextField
+                                    id="filled-password-input"
+                                    label="Pin"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    variant="filled"
+                                    style = {{marginTop:20}}
+                                    onChange = {handlePin}
+                                    onBlur = {handlePin}
+                                    />
+                                </div>
+                                <div style = {{marginTop:20, display:'flex',justifyContent:'center'}}>
+                                    <Button variant = 'contained' color = 'primary' style =  {{width:220}} disableRipple  onClick = {handlePayment}>Pay</Button>
+                                </div> 
+                                </Box>
+                            </Modal>
+                        </Grid>
+                    </Grid>
+                </Container>
+        </>)
+}; 

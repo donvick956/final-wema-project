@@ -204,7 +204,7 @@ const Home = (props) => {
                                              value={values.password}
                                              className = {classCust.inputField}                                   
                                              onChange={handleChange('password')}
-                                             endAdornment={
+                                             endadornment={
                                              <InputAdornment position="end">
                                                  <IconButton
                                                  aria-label="toggle password visibility"

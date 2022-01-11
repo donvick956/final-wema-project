@@ -53,10 +53,13 @@ function ElevationScroll(props) {
               color:'white'
           },
         appBar: {
-            zIndex: theme.zIndex.appBar
+            zIndex: theme.zIndex.appBar,
         }, 
         toolbarMargin: {
             marginTop: '20px'
+        },
+        toolbarMarginBottom: {
+            marginBottom: 100
         } 
       }
   ));
@@ -135,7 +138,7 @@ const Welcome = (props) => {
         {/* outlet */}
             <Box sx={{ flexGrow: 1 }}>
                 <ElevationScroll>
-                <AppBar position="static" className= {classes.appBar} style ={{zIndex:2000}}>
+                <AppBar position="fixed" className= {classes.appBar} style ={{zIndex:2000}}>
                     <Toolbar>
                     <IconButton
                         size="large"
@@ -161,6 +164,7 @@ const Welcome = (props) => {
             </ElevationScroll>
             {drawer}
         </Box>
+        <div className={classes.toolbarMarginBottom}/> 
         <Outlet />
     </div>);
 }
