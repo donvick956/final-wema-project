@@ -13,6 +13,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const style = {
     position: 'absolute',
@@ -34,6 +35,8 @@ export const Details = () => {
     const handleClose = () => setOpen(false);
     const [error,setError] = useState(false);
     const [pin, setPin] = useState('');
+
+    const navigate = useNavigate();
 
     const sender = useSelector(state => state.reducer);
     console.log(sender[0]);
@@ -60,7 +63,7 @@ export const Details = () => {
             accountPin: pin.toString(), 
             transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'))
             console.log(response);
-            
+            navigate(`/welcome/result/${response}`);
         } else {
             setError(true);
         }

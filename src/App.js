@@ -24,7 +24,7 @@ function App() {
         <Route  path='multiple' element={<Multiple />}  />
         <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/>
         <Route  path = 'details' element = {<Details/>}/>
-        <Route  path = 'result' element = {<Result/>}/>
+        <Route  path = 'result/:placeholder' element = {<Result/>}/>
       </Route>
       <Route path = '*'  element = {<Error/>} />
     </Routes>
