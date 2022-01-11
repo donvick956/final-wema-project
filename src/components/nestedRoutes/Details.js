@@ -60,7 +60,7 @@ export const Details = () => {
             if(Number(pin.length) === 4) {
                 setError(false);
                 console.log(pin);
-                let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
+                let response =await axios.post('https://xmtapi.azurewebsites.net/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
                 accountPin: pin.toString(), 
                 transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'));
                 console.log(response);
