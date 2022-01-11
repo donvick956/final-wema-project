@@ -33,7 +33,10 @@ export const Details = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [error,setError] = useState(false);
-    const [pin, setPin] = useState('')
+    const [pin, setPin] = useState('');
+
+    const sender = useSelector(state => state.reducer);
+    console.log(sender[0]);
 
     const multipleTransfer = useSelector(state => state.detail);
     console.log(multipleTransfer);
@@ -52,8 +55,12 @@ export const Details = () => {
         event.preventDefault();
         if(Number(pin.length) === 4) {
             setError(false);
-            // let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {transfers:multipleTransfer}).then(res => res).catch(err => console.error(err,'error on post request of transfer'))
-            // console.log(response);
+            console.log(pin);
+            let response =await axios.post('https://localhost:44322/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
+            accountPin: pin.toString(), 
+            transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'))
+            console.log(response);
+            
         } else {
             setError(true);
         }
