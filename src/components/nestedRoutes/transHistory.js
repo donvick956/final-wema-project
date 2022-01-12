@@ -24,7 +24,7 @@ export const History = () => {
         return navigate('/');
     }
     async  function getData () {
-        let getTransactionDetails = await axios.get(`https://localhost:44322/Transaction/transaction_receipts?accountNumber=${user.accountNumber}`).then(response => setData(response.data)).catch(err => console.log(err, 'error caught during post of account number '));
+        let getTransactionDetails = await axios.get(`https://xmtapi.azurewebsites.net/Transaction/transaction_receipts?accountNumber=${user.accountNumber}`).then(response => setData(response.data)).catch(err => console.log(err, 'error caught during post of account number '));
         console.log(getTransactionDetails);
     }
     getData();
