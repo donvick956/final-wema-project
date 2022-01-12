@@ -51,12 +51,11 @@ const Dashboard = (props) => {
         greeting();
         getUsers();
         getFreshUpdate();
-        // console.log(newUser, 'hereeee');
     }, [navigate, user,newUser]);
 
     return ( <>
         <Container>
-            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Good {time},{user[0].firstName}</Typography>}
+            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Good {time}, {user[0].firstName}</Typography>}
         </Container>
         <Container>
           <Grid container direction='row' spacing = {2} style={{marginLeft:20, marginRight:20,marginTop:20}}>

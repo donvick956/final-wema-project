@@ -120,6 +120,14 @@ const Welcome = (props) => {
                             </ListItem>
                         </List>
                         <List>
+                            <ListItem divider button onClick={() => {setOpenDrawer(false);props.setValue(3)}}
+                            component={Link}
+                            to ='/welcome/history'
+                            selected ={props.value === 3 && window.location.pathname ==='/welcome/history'}>
+                                <ListItemText disableTypography className={classes.drawerItem}>Transaction History</ListItemText>
+                            </ListItem>
+                        </List>
+                        <List>
                             <ListItem divider button onClick={() => handleLogOut()}>
                                 <ListItemText disableTypography className={classes.drawerItem}>Log Out</ListItemText>
                             </ListItem>
@@ -135,7 +143,7 @@ const Welcome = (props) => {
     }, [location.pathname, navigate, user.length]);
 
     const handleLogOut = () => {
-        dispatch(logOutAction({email:'', password:''}));
+        dispatch(logOutAction({email:'', password: ''}));
         dispatch(createGroup({}));
         dispatch(detailAction({}));
         

@@ -11,6 +11,7 @@ import { useState } from 'react';
 import BankForm from './components/nestedRoutes/BankForm';
 import { Details } from './components/nestedRoutes/Details';
 import { Result } from './components/nestedRoutes/transResult';
+import { History } from './components/nestedRoutes/transHistory';
 
 
 function App() { 
@@ -25,6 +26,7 @@ function App() {
         <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/>
         <Route  path = 'details' element = {<Details/>}/>
         <Route  path = 'result/:placeholder' element = {<Result/>}/>
+        <Route  path = 'history' element = {<History/>}/>
       </Route>
       <Route path = '*'  element = {<Error/>} />
     </Routes>

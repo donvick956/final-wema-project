@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 export const Result = () => {
     const {placeholder} = useParams();
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ export const Result = () => {
             </Container>
             {placeholder && success.includes('successfully') && <Container>
                     <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Dear Customer your transaction was processed {success[2]}</Typography>
+                    <div  color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}><Typography component = {Link} to = '/welcome/history'>View history</Typography></div> 
                     <Button variant = 'outlined' color = 'primary' component = {Link} to = '/welcome' style =  {{marginLeft: 90, marginTop:30, textTransform:'none'}}> Go back</Button>
             </Container>}
             { placeholder && !success.includes('successfully') && <Container>

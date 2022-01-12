@@ -13,8 +13,8 @@ function* logInWatcher (action) {
 }
 
 function* logOutWatcher (action) {
-    yield put(logOutActionSuccess (action.payload));
-    yield call(logOutActionSession,action.payload);
+    yield put(logOutActionSuccess ({}));
+    yield call(logOutActionSession);
 }
 
 function* logInActionSession(payload) {
