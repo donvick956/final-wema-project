@@ -12,6 +12,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+import CircularIndeterminate from "../UI/Spinner";
+
 export const History = () => {
     const [data, setData ] = useState([]);
     const user = useSelector(state => state.reducer[0]); 
@@ -30,6 +32,11 @@ export const History = () => {
     getData();
 
     }, []);
+    if (!data.length)   {
+        return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
+                <CircularIndeterminate/>
+            </div>);
+    }
 
     const dateTime = (params) => {
         let arr =  params.split('T');
