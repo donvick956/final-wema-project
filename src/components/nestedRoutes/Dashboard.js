@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import background from '../../assets/Jemeelah-3.png'
 
 
 import atm from '../../assets/atm.svg';
@@ -12,7 +14,8 @@ import money from '../../assets/money.svg';
 import multiple from '../../assets/Multiple.svg';
 import mail from '../../assets/XMLID_1_.svg';
 import tangle from '../../assets/Vector-1.svg';
-import axios from "axios";
+import CircularIndeterminate from "../UI/Spinner";
+
 
 const Dashboard = (props) => {
     const [time,setTime] = useState('');
@@ -53,9 +56,15 @@ const Dashboard = (props) => {
         getFreshUpdate();
     }, [navigate, user,newUser]);
 
-    return ( <>
+    if(!displayUser.length) {
+        return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
+        <CircularIndeterminate/>
+    </div>);
+    }
+
+    return ( <div>
         <Container>
-            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Good {time}, {user[0].firstName}</Typography>}
+            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20, marginTop:100}}>Good {time}, {user[0].firstName}</Typography>}
         </Container>
         <Container>
           <Grid container direction='row' spacing = {2} style={{marginLeft:20, marginRight:20,marginTop:20}}>
@@ -113,6 +122,6 @@ const Dashboard = (props) => {
                 <span style = {{marginLeft:5}}>0700000001</span>
                 </div>
             </div>
-        </Container></>);
+        </Container></div>);
 }
 export default Dashboard;

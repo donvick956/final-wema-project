@@ -25,6 +25,7 @@ import { createGroup, createGroupSuccess } from "../redux/action/transAction";
 
 
 
+
 import { logOutAction } from "../redux/action/action";
 
 function ElevationScroll(props) {
@@ -61,7 +62,7 @@ function ElevationScroll(props) {
             marginTop: '20px'
         },
         toolbarMarginBottom: {
-            marginBottom: 100
+            marginBottom: 60
         } 
       }
   ));
@@ -143,8 +144,8 @@ const Welcome = (props) => {
     }, [location.pathname, navigate, user.length]);
 
     const handleLogOut = () => {
-        dispatch(logOutAction({email:'', password: ''}));
-        dispatch(createGroup([]));
+        dispatch(logOutAction([]));
+        dispatch(createGroup({}));
         dispatch(detailAction({}));
         
         return navigate('/');
@@ -181,7 +182,7 @@ const Welcome = (props) => {
             {drawer}
         </Box>
         <div className={classes.toolbarMarginBottom}/> 
-        <Outlet />
-    </div>);
+            <Outlet />
+        </div>);
 }
 export default Welcome;

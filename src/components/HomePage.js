@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../redux/action/action';
 import axios from "axios";
+import background from '../assets/svg-background.svg'
 // import useVH from 'react-viewport-height';
  
 // import OutlinedInput from '@mui/material/OutlinedInput';
@@ -23,27 +24,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {Bubble} from './UI/bubble';
 
   const useStyle = makeStyles(theme => ({
-      textCenter: {
-          textAlign: 'center',
-          color:theme.palette.primary.light
-      },
-      loginImg:{
-          maxWidth: '100%',
-          width: '100%',
-          maxHeight:'100vh',
-          height:'100vh',
-          backgroundColor:'black',
-          backgroundImage: `url(${login})`,
-          backgroundPosition:'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize:'cover',
-          [theme.breakpoints.down('md')]: {
-            display:'none',
-          }
-      },
       borderInput: {
           borderColor: theme.palette.primary.main
       },
@@ -55,18 +38,28 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
           color: '#F62658',
           marginLeft: '200px'
       },
+      whiteColor: {
+          color: '#fff',
+          marginLeft: '100px',
+          opacity:0.7
+      },
       gridBox:  {
         height:200,
         width:'100%',
         opacity: 1.5,
-          [theme.breakpoints.down('md')]: {
-              backgroundColor:`${theme.palette.primary.main}`,
-          }
+        //   [theme.breakpoints.down('md')]: {
+        //       backgroundColor:`${theme.palette.primary.main}`,
+        //   }
       },
       wrapper: {
-          display:'grid',
-          gridTemplateColumns:`auto auto`,
-          gridColumnGap:'10px'
+          margin:0,
+          backgroundImage:`url(${background})`,
+          height:'100vh',
+          overflowX:'hidden',
+          backgroundPosition:'center',
+        //   backgroundAttachment: 'fixed',
+        //   backgroundRepeat: 'no-repeat',
+          backgroundSize:'cover'
       },
   }));
 const Home = (props) => {
@@ -133,9 +126,6 @@ const Home = (props) => {
             setEmailError(false);
         }
         if(data){ 
-            // let user = JSON.parse(data);
-            // let validData = user.filter(val => val.email === email);
-            // console.log(validData);
             console.log(data);
             fetchApi();
         }
@@ -144,48 +134,32 @@ const Home = (props) => {
     const classCust = useStyle();
     return (
         <div className={classCust.wrapper}>
-            <div className={classCust.loginImg}>
-                <div style = {{marginTop:'50px'}}>                        
-                         <div style = {{display:'flex', justifyContent: 'center', width:'100%', height:30}}>
-                             <img src={menuLogo} alt="xmt logo" style = {{width: 100, height: 100, marginTop:'90px'}} />
-                         </div>
-                         <article style = {{marginTop:'150px', padding: '30px'}}>
-                             <div style = {{marginTop:30}}>
-                                 <Typography variant='h4' color = 'secondary' style = {{fonstSize:10}}>Sign up seamlessly</Typography>
-                             </div><br />
-                             <div>
-                                 <Typography variant='h6' color = 'secondary' style = {{fonstSize:5}}>Send money to multiple Accounts with one CLICK...no paperwork required.
-                                 </Typography>
-                             </div>
-                             <div style = {{display:'flex', justifyContent: 'center', marginTop:'20px'}}>
-                                 <Button variant="contained" color = 'secondary' background = 'primary' disableRipple>Get Started</Button>
-                             </div>
-                             <div style = {{display: 'flex', justifyContent: 'space-evenly', marginTop:'80px', width: '100%'}}>
-                                 <img src={instagram} alt="" style={{width: '20px', height: '20px'}} />
-                                 <img src={facebook} alt=""  style={{width: '20px', height: '20px'}} />
-                                 <img src={twitter} alt="" style={{width: '20px', height: '20px'}} />
-                             </div>
-                         </article>
-                     </div>
-            </div>
-            <div className={classCust.loginForm}>
-            <div style = {{display: 'flex', justifyContent: 'center', width:'100%', marginTop:'80px', alignItems :'center'} }>
-                        <div style = {{marginLeft:'0px'}}>
-                            <h3 className={classCust.textCenter} >Go to XMT Website</h3>
-                             <p style = {{marginLeft:'20px'}}>Welcome Back!</p>
+             <Bubble/>
+            <div style = {{ width:'100%',} }>
+                        <div style = {{marginLeft:'20px'}}>
                              {warning && <Typography variant = 'em' 
+                                         style = {{color:'red', textAlign:'center'}}>
+                                         </Typography>}
+                             <Typography variant = 'h2' color= 'secondary' style= {{position:'relative', top:'190px', left:70}}>Welcome!</Typography>
+                             <div style= {{position:'relative', top:'220px', left:80}}>
+                                 
+                                {warning && <Typography variant = 'em' 
                                          style = {{color:'red', textAlign:'center'}}>Invalid Details
                                          </Typography>}
-                             <div>
                                  <form  onSubmit={handleSubmit}>
-                                     <div>
-                                         <p>
+                                     <div style = {{marginTop:3}}>
+                                         <div style={{marginBottom:20}}>
+                                         <Typography variant = 'p' color = 'secondary'>
                                              Email Address/Username
-                                         </p>
+                                         </Typography>
+                                         </div>
                                          <TextField 
-                                         id="outlined-basic" 
-                                         sx = {{width: 400}} 
-                                         onChange = {handleEmail} />
+                                         id="standard-text" 
+                                         variant ='standard'
+                                         color = 'secondary'
+                                         sx = {{width: 300}} 
+                                         onChange = {handleEmail}
+                                         focused />
                                          <div>
                                          {emailError && <Typography variant = 'em' 
                                          style = {{color:'red'}}>Email/Username cannot be empty
@@ -194,16 +168,19 @@ const Home = (props) => {
                                      </div>
                                      <div>
                                          <div style = {{marginTop:'20px'}} >
-                                             <span>Password</span>
-                                             <span className={classCust.pinkColor}>Forgot Password?</span>
+                                             <span style ={{color:'white'}}>Password</span>
+                                             <span className={classCust.whiteColor}>Forgot Password?</span>
                                          </div>
                                          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined"/>
                                          <div></div>
                                          <TextField
                                              id="outlined-adornment-password"
+                                             variant = 'standard'
+                                             color = 'secondary'
                                              type={values.showPassword ? 'text' : 'password'}
                                              value={values.password}
-                                             className = {classCust.inputField}                                   
+                                             focused
+                                            //  className = {classCust.inputField}                                   
                                              onChange={handleChange('password')}
                                              endadornment={
                                              <InputAdornment position="end">
@@ -212,27 +189,27 @@ const Home = (props) => {
                                                 onClick={handleClickShowPassword}
                                                  onMouseDown={handleMouseDownPassword}
                                                  edge="end"
+                                                 color = 'secondary'
                                                  >
                                                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
                                                  </IconButton>
                                              </InputAdornment>
                                              }
-                                             sx = {{width: 400}}
-                                            //  focused
+                                             sx = {{width: 300}}
                                          />
                                          <div>
                                          {passwordError && <Typography variant = 'em' 
-                                         style = {{color:'red'}}>Password cannot be empty
+                                         style = {{color:'#F62650'}}>Password cannot be empty
                                          </Typography>}
                                          </div>
                                      </div>
-                                     <Button variant="contained" sx = {{width:'100%', marginTop:'50px'}} type ='submit'>Login</Button>
+                                     <Button variant="contained" sx = {{width:'300px', marginTop:'50px'}} type ='submit'>Login</Button>
                                  </form>
                              </div>
                          </div>
                      </div>
+                   
             </div>
-        </div>
         );
 }
 export default Home;
