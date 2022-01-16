@@ -20,7 +20,7 @@ export const History = () => {
     const [data, setData ] = useState([]);
     const user = useSelector(state => state.reducer[0]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(10);
+    const [postsPerPage] = useState(20);
 
      
     const navigate = useNavigate();
@@ -75,20 +75,6 @@ export const History = () => {
                             </TableHead>
                              <TableBody>
                                  {Post(currentPosts)}
-                                {/* {data.length && data.map((val,key) => 
-                                <TableRow
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                key = {key}>
-                                    <TableCell component="th" scope="row">
-                                        {key+1}
-                                    </TableCell>
-                                    <TableCell align="left">{val.receiverAccount}</TableCell>
-                                    <TableCell align="left">{val.transactionAmount}</TableCell>
-                                    <TableCell align="left">{dateTime(val.transactionDate)}</TableCell>
-                                    <TableCell align="left">{(val.transactionType)}</TableCell>
-                                    <TableCell align="left">{(val.transactionId)}</TableCell>
-                                </TableRow>
-                                )} */}
                             </TableBody>
                         </Table>
                     </TableContainer>
