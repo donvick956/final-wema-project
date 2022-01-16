@@ -13,10 +13,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import CircularIndeterminate from "../UI/Spinner";
+import background from '../../assets/Jemeelah2-1.svg';
+import Paginations from "../UI/Pagination";
 
 export const History = () => {
     const [data, setData ] = useState([]);
-    const user = useSelector(state => state.reducer[0]); 
+    const user = useSelector(state => state.reducer[0]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
+
+     
     const navigate = useNavigate();
     console.log(user);
 
@@ -32,28 +38,27 @@ export const History = () => {
     getData();
 
     }, []);
+
     if (!data.length)   {
         return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
                 <CircularIndeterminate/>
             </div>);
     }
-
-    const dateTime = (params) => {
-        let arr =  params.split('T');
-        let arr2 = arr[1].split('.');
-        let time = '';
-        let conv = arr2[0].split(':')
-        if(conv[0] < 12)  {
-            time = 'AM';
-        }else {
-            time = 'PM';
-        }
-        return `${arr[0]}  ${arr2[0]} ${time}`;
-        // return new Date(d);
-    }
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+    const paginate = pageNumber => setCurrentPage(pageNumber + 1);
     return (<>
+            {/* <div
+                    style = {{backgroundImage:`url(${background})`,
+                    height:'100vh',
+                    width:'100%',
+                    overflowX:'hidden',
+                    backgroundPosition:'center',
+                    backgroundSize:'cover',
+                    }}> */}
             <Container>
-                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Transfer Details</Typography>
+                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:100, fontSize:20}}>Transfer Details</Typography>
             </Container>
             <Container>
                     <TableContainer style =  {{marginLeft: 100, marginTop:50}} >
@@ -68,8 +73,9 @@ export const History = () => {
                                     <TableCell>Ref ID</TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
-                                {data.length && data.map((val,key) => 
+                             <TableBody>
+                                 {Post(currentPosts)}
+                                {/* {data.length && data.map((val,key) => 
                                 <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 key = {key}>
@@ -82,11 +88,44 @@ export const History = () => {
                                     <TableCell align="left">{(val.transactionType)}</TableCell>
                                     <TableCell align="left">{(val.transactionId)}</TableCell>
                                 </TableRow>
-                                )} 
+                                )} */}
                             </TableBody>
                         </Table>
                     </TableContainer>
                 </Container>
-            
+                <Container style = {{display:'flex', justifyContent:'center', margin:20}}>
+                    <Paginations  style =  {{marginLeft: 90, marginTop:100, fontSize:20}} postsPerPage={postsPerPage} totalPosts={data.length} paginate = {paginate} />
+            </Container>
+            {/* </div> */}
         </>);
+}
+
+const dateTime = (params) => {
+    let arr =  params.split('T');
+    let arr2 = arr[1].split('.');
+    let time = '';
+    let conv = arr2[0].split(':')
+    if(conv[0] < 12)  {
+        time = 'AM';
+    }else {
+        time = 'PM';
+    }
+    return `${arr[0]}  ${arr2[0]} ${time}`;
+}
+
+function Post (posts) {
+    return (posts.map((val,key) => 
+        <TableRow
+        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+        key = {key}>
+            <TableCell component="th" scope="row">
+                {key+1}
+            </TableCell>
+            <TableCell align="left">{val.receiverAccount}</TableCell>
+            <TableCell align="left">{val.transactionAmount}</TableCell>
+            <TableCell align="left">{dateTime(val.transactionDate)}</TableCell>
+            <TableCell align="left">{(val.transactionType)}</TableCell>
+            <TableCell align="left">{(val.transactionId)}</TableCell>
+        </TableRow>
+        ) );
 }

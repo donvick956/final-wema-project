@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import background from '../../assets/Jemeelah2-1.svg';
 
 export const Result = () => {
     const {placeholder} = useParams();
@@ -24,8 +25,18 @@ export const Result = () => {
         
     }, []);
     return <>
+            <div
+                style = {{backgroundImage:`url(${background})`,
+                height:'100vh',
+                width:'100%',
+                overflowX:'hidden',
+                backgroundPosition:'center',
+                backgroundSize:'cover',
+                    }}
+            >
+
             <Container>
-                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Transfer Details</Typography>
+                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:100, fontSize:20}}>Transfer Details</Typography>
             </Container>
             {placeholder && success.includes('successfully') && <Container>
                     <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Dear Customer your transaction was processed {success[2]}</Typography>
@@ -36,5 +47,6 @@ export const Result = () => {
                     <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Dear Customer your transaction was unsuccessful.</Typography>
                     <Button variant = 'outlined' color = 'primary' onClick  = {handleClick} style =  {{marginLeft: 90, marginTop:30}}> Go back</Button>
             </Container>}
+        </div>
     </>
 }

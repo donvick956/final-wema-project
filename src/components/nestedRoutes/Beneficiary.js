@@ -11,6 +11,9 @@ import { useState,useEffect } from 'react';
 import  { makeStyles } from '@mui/styles';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+
+import background from '../../assets/Jemeelah1-1.svg';
+
 const styles = makeStyles(theme => (
     {
         selectRoot: {
@@ -53,9 +56,17 @@ export const Beneficiary = () => {
     const handleSelect = (e) => {
         setBank(e.target.value);
     }
-    return (<div>
+    return (<div
+        style = {{backgroundImage:`url(${background})`,
+        height:'100vh',
+        width:'100%',
+        overflowX:'hidden',
+        backgroundPosition:'center',
+        backgroundSize:'cover',
+        }}
+    >
         <Container>
-        <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}> Save Beneficiary</Typography>
+        <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:100, fontSize:20}}> Save Beneficiary</Typography>
         </Container>
         <Container style =  {{marginTop:50, fontSize:20}} >
             <Grid container direction = 'row' spacing={0}>

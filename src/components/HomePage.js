@@ -59,6 +59,7 @@ import {Bubble} from './UI/bubble';
           backgroundPosition:'center',
         //   backgroundAttachment: 'fixed',
         //   backgroundRepeat: 'no-repeat',
+        
           backgroundSize:'cover'
       },
   }));
@@ -140,8 +141,8 @@ const Home = (props) => {
                              {warning && <Typography variant = 'em' 
                                          style = {{color:'red', textAlign:'center'}}>
                                          </Typography>}
-                             <Typography variant = 'h2' color= 'secondary' style= {{position:'relative', top:'190px', left:70}}>Welcome!</Typography>
-                             <div style= {{position:'relative', top:'220px', left:80}}>
+                             <Typography variant = 'h2' color= 'secondary' style= {{position:'relative', top:'190px', left:40}}>Welcome!</Typography>
+                             <div style= {{position:'relative', top:'220px', left:40}}>
                                  
                                 {warning && <Typography variant = 'em' 
                                          style = {{color:'red', textAlign:'center'}}>Invalid Details
@@ -159,7 +160,9 @@ const Home = (props) => {
                                          color = 'secondary'
                                          sx = {{width: 300}} 
                                          onChange = {handleEmail}
-                                         focused />
+                                         focused
+                                         style = {{backgroundColor:'primary'}}
+                                          />
                                          <div>
                                          {emailError && <Typography variant = 'em' 
                                          style = {{color:'red'}}>Email/Username cannot be empty

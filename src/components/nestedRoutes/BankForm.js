@@ -282,7 +282,7 @@ const BankForm = () => {
 
     return (<div>
                 <Container>
-                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Multiple Transfer</Typography>
+                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:100, fontSize:20}}>Multiple Transfer</Typography>
                 </Container>
                 <Container>
                     <Typography variant="body1" style =  {{marginLeft: 90,fontSize:20, marginTop:30}}>{placeholder}  ({(groupDetails.filter(val => val.group === placeholder))[0].receiver}/10)</Typography>

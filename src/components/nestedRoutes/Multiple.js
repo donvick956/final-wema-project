@@ -52,26 +52,26 @@ export const Multiple = () => {
     const handleGroupSelect = () => {
         navigate(`/welcome/bankForm/${group}`);
     }
-    const localTransferState = useSelector(state => state.transfer);
-    console.log(localTransferState);
+    // const localTransferState = useSelector(state => state.transfer);
+    // console.log(localTransferState);
 
-    const handleSelect = (e) => {
-        setReciver(e.target.value);
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // dispatch
-        dispatch(createGroup({group:group,receiver:receiver}));
-        // setReciver('');
-        // setGroup('');
-    }
-    const handleGroup = (e) => {
-        setGroup(e.target.value);
-        console.log(group);
-    }
+    // const handleSelect = (e) => {
+    //     setReciver(e.target.value);
+    // }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     // dispatch
+    //     dispatch(createGroup({group:group,receiver:receiver}));
+    //     // setReciver('');
+    //     // setGroup('');
+    // }
+    // const handleGroup = (e) => {
+    //     setGroup(e.target.value);
+    //     console.log(group);
+    // }
     return (<div>
         <Container>
-        <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Multiple Transfer</Typography>
+        <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:100, fontSize:20}}>Multiple Transfer</Typography>
         </Container>
         <Container style =  {{marginTop:50, fontSize:20}} >
             <Grid container direction = 'row' spacing={0} rowSpacing={5}>
@@ -91,12 +91,12 @@ export const Multiple = () => {
                 <Grid item md ={6} xs ={12} >
                 <Grid container direction='column' spacing = {3}>
                     <Grid item>
-                            <Typography variant="body1" style =  {{marginLeft: 20, fontSize:15}}>Create Group</Typography>
-                        </Grid>
-                        <Grid item>
+                            <Typography variant="body1" style =  {{marginLeft: 20, fontSize:15}}>Groups</Typography>
+                    </Grid>
+                        {/* <Grid item>
                             <TextField id="outlined-basic" label="Group Name" variant="outlined" style = {{marginLeft: 20, width:300}} onChange={handleGroup} />
-                        </Grid>
-                        <Grid item>
+                        </Grid> */}
+                        {/* <Grid item>
                             <FormControl style =  {{marginLeft: 20, width:300}}>
                                 <InputLabel id="demo-simple-select-label" style = {{fontSize:15}}>Recipient No</InputLabel>
                                     <Select
@@ -113,10 +113,10 @@ export const Multiple = () => {
                                     ))}
                                     </Select>
                             </FormControl>
-                        </Grid>
-                        <Grid item>
+                        </Grid> */}
+                        {/* <Grid item>
                             <Button variant='contained' style =  {{marginLeft: 20, width:300}} onClick = {handleSubmit}>Save</Button>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </Grid>
             </Grid>

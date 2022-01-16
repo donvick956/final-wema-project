@@ -14,6 +14,7 @@ import TextField from '@mui/material/TextField';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import background from '../../assets/Jemeelah1-1.svg';
 
 const style = {
     position: 'absolute',
@@ -82,8 +83,15 @@ export const Details = () => {
     }
 
  return (<>
+                <div style = {{backgroundImage:`url(${background})`,
+                    height:'100vh',
+                    width:'100%',
+                    overflowX:'hidden',
+                    backgroundPosition:'center',
+                    backgroundSize:'cover',
+                    }}>
                 <Container>
-                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:50, fontSize:20}}>Transfer Details</Typography>
+                    <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:100, fontSize:20}}>Transfer Details</Typography>
                 </Container>
                 <Container>
                     <TableContainer style =  {{marginLeft: 100, marginTop:50}} >
@@ -149,5 +157,6 @@ export const Details = () => {
                         </Grid>
                     </Grid>
                 </Container>
+                </div>
         </>)
 }; 

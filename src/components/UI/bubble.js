@@ -1,6 +1,6 @@
 import './bubble.css'
 export const Bubble = () => {
-    return (<section class="sticky">
+    return (<section className="sticky">
     <div className="bubbles">
         <div className="bubble"></div>
       <div className="bubble"></div>
