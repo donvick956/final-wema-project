@@ -13,10 +13,10 @@ import Modal from '@mui/material/Modal';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
-import { createGroup } from '../../redux/action/transAction';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { detailAction } from '../../redux/action/action';
 
 const styles = makeStyles(theme => (
     {
@@ -90,13 +90,12 @@ export const Multiple = () => {
             axios.post('https://xmtapi.azurewebsites.net/Transaction/find_account',{bank:e.target.value, accountNumber:accountNumber}).then(response => (setAccountName(response.data.customerName))).catch(err => console.error(err,'i caught the error'));
             }
     }
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // dispatch
-    //     dispatch(createGroup({group:group,receiver:receiver}));
-    //     // setReciver('');
-    //     // setGroup('');
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // dispatch
+        dispatch(detailAction(receiver));
+        navigate('/welcome/details');
+    }
     const resetState = () => {
         setAccountNumber('');
         setAmount(0);
@@ -157,7 +156,7 @@ export const Multiple = () => {
                                 </div>
                         </Grid>)}
                         {(receiver.length >= 2  && receiver.length <= 10) && <Grid item xs ={12} md = {12} >
-                            <Button color = 'primary' variant = 'contained' disableRipple style =  {{marginLeft: 20}} endIcon={< ArrowRightAltIcon/>}>Proceed</Button>
+                            <Button color = 'primary' variant = 'contained' disableRipple style =  {{marginLeft: 20}} endIcon={< ArrowRightAltIcon/>} onClick = {handleSubmit}>Proceed</Button>
                         </Grid>}
                         {/* {!localTransferState && <Grid item>
                              <Typography variant="h6" style =  {{marginLeft: 20, fontSize:13}}>No Group yet</Typography>

@@ -23,7 +23,7 @@ function App() {
         <Route  path='' element={<Dashboard  value = {value} setValue = {setValue}/>}  />
         <Route  path='beneficiary' element={<Beneficiary />}  />
         <Route  path='multiple' element={<Multiple />}  />
-        <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/>
+        {/* <Route  path = 'bankForm/:placeholder' element = {<BankForm/>}/> */}
         <Route  path = 'details' element = {<Details/>}/>
         <Route  path = 'result/:placeholder' element = {<Result/>}/>
         <Route  path = 'history' element = {<History/>}/>
