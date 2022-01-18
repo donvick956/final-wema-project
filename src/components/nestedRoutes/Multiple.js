@@ -112,6 +112,8 @@ export const Multiple = () => {
             handleClose();
             resetState();
             console.log(receiver);
+        }else   {
+            return handleClose();  
         }
     }
     return (<div style = {{height:'100%'}}>
