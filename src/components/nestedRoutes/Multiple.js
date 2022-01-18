@@ -72,7 +72,8 @@ export const Multiple = () => {
             return navigate('/');
         }
         async function getBanks () {
-            let response = await axios.get('https://xmtapi.azurewebsites.net/Bank/get_banks').then(res =>setBank(res.data)).catch(err => console.log('error from get bank'));
+             await axios.get('https://xmtapi.azurewebsites.net/Bank/get_banks')
+             .then(res =>setBank(res.data)).catch(err => console.log('error from get bank'));
         }
         getBanks();
         
@@ -103,16 +104,17 @@ export const Multiple = () => {
         setAccountName('')
     }
     const handleModal = () => {
-        if(accountNumber.length === 10 && options && accountName.length>0 && Number(amount) >= 0 && receiver.length <=10 ) {
+        if(accountNumber.length === 10 && options && accountName.length>0 && Number(amount) >= 0 && receiver.length+1 <= 10 ) {
+            console.log(receiver.length);
             setReceiver(prevState => [...prevState,{transactionAmount: Number(amount),
                 receiverAccount:accountNumber,
                bank:options}]);
             handleClose();
             resetState();
-            console.log(receiver)
+            console.log(receiver);
         }
     }
-    return (<div>
+    return (<div style = {{height:'100%'}}>
         <Container>
         <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, marginTop:100, fontSize:20}}>Multiple Transfer</Typography>
         </Container>
@@ -151,11 +153,11 @@ export const Multiple = () => {
                         </Grid>}
                         {receiver.map( (val,key) => <Grid item xs ={12} md = {12} key= {key} >
                                 <div style = {{boxShadow:'2px 2px 2px 0.5'}}>
-                                    <Typography variant = 'h6' style =  {{marginLeft: 20, fontSize:12}}>{val.receiverAccount}</Typography>
+                                    <Typography variant = 'body1' color = 'primary' style =  {{marginLeft: 20, fontSize:15}}>{val.receiverAccount}</Typography>
                                     <Typography variant = 'h6' style =  {{marginLeft: 20, fontSize:12}}>{val.bank} |   N{val.transactionAmount}</Typography>
                                 </div>
                         </Grid>)}
-                        {(receiver.length >= 2  && receiver.length <= 10) && <Grid item xs ={12} md = {12} >
+                        {(receiver.length >= 2 && receiver.length <= 10) && <Grid item xs ={12} md = {12} >
                             <Button color = 'primary' variant = 'contained' disableRipple style =  {{marginLeft: 20}} endIcon={< ArrowRightAltIcon/>} onClick = {handleSubmit}>Proceed</Button>
                         </Grid>}
                         {/* {!localTransferState && <Grid item>
