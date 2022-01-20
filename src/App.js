@@ -8,10 +8,11 @@ import { Multiple } from './components/nestedRoutes/Multiple';
 import { Beneficiary } from './components/nestedRoutes/Beneficiary';
 import theme from './components/UI/Theme';
 import { useState } from 'react';
-import BankForm from './components/nestedRoutes/BankForm';
+// import BankForm from './components/nestedRoutes/BankForm';
 import { Details } from './components/nestedRoutes/Details';
 import { Result } from './components/nestedRoutes/transResult';
 import { History } from './components/nestedRoutes/transHistory';
+import { CreateAccount } from './CreateAccount';
 
 
 function App() { 
@@ -28,6 +29,7 @@ function App() {
         <Route  path = 'result/:placeholder' element = {<Result/>}/>
         <Route  path = 'history' element = {<History/>}/>
       </Route>
+      <Route path = '/createAccount' element = {<CreateAccount/>} />
       <Route path = '*'  element = {<Error/>} />
     </Routes>
   );
