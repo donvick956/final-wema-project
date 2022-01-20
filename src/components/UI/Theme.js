@@ -30,8 +30,8 @@ const theme = createTheme({
           }
     },
     MuiInput:  {
-        MuiOutlinedInput:{
-             border:'none',
+      MuiTextField:{
+            //  border:'none',
             //  "&:hover":{
             //      border:'none'
             //  }

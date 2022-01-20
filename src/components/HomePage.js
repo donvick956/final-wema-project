@@ -62,6 +62,10 @@ import {Bubble} from './UI/bubble';
         
           backgroundSize:'cover'
       },
+      adornment:{
+        color:'white',
+        backgroundColor:'white'
+    }
   }));
 const Home = (props) => {
     const [values, setValues] = useState({
@@ -158,10 +162,11 @@ const Home = (props) => {
                                          id="standard-text" 
                                          variant ='standard'
                                          color = 'secondary'
-                                         sx = {{width: 300}} 
+                                         sx = {{width: 300, input: { color: 'white' }}} 
                                          onChange = {handleEmail}
                                          focused
                                          style = {{backgroundColor:'primary'}}
+                                         
                                           />
                                          <div>
                                          {emailError && <Typography variant = 'em' 
@@ -182,23 +187,22 @@ const Home = (props) => {
                                              color = 'secondary'
                                              type={values.showPassword ? 'text' : 'password'}
                                              value={values.password}
-                                             focused
-                                            //  className = {classCust.inputField}                                   
+                                             focused                                   
                                              onChange={handleChange('password')}
                                              endadornment={
-                                             <InputAdornment position="end">
+                                             <InputAdornment position="end" color = 'secondary' sx = {{ classes : { adornedEnd : classCust.adornment } }} >
                                                  <IconButton
                                                  aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
+                                                 onClick={handleClickShowPassword}
                                                  onMouseDown={handleMouseDownPassword}
                                                  edge="end"
-                                                 color = 'secondary'
+                                                 classes = {{adornedEnd : classCust.adornment}}
                                                  >
                                                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
                                                  </IconButton>
                                              </InputAdornment>
                                              }
-                                             sx = {{width: 300}}
+                                             sx = {{width: 300,input: { color: 'white' } }}
                                          />
                                          <div>
                                          {passwordError && <Typography variant = 'em' 
