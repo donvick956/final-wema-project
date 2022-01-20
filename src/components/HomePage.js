@@ -6,20 +6,17 @@ import { makeStyles } from '@mui/styles';
 import { useState,useEffect } from 'react';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import menuLogo from '../assets/official-logo.png';
-import instagram from '../assets/instagram.png';
-import twitter from '../assets/twitter.png';
-import facebook from '../assets/facebook.png'
+import { Link } from 'react-router-dom';
+// import menuLogo from '../assets/official-logo.png';
+// import instagram from '../assets/instagram.png';
+// import twitter from '../assets/twitter.png';
+// import facebook from '../assets/facebook.png'
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../redux/action/action';
 import axios from "axios";
 import background from '../assets/svg-background.svg'
-// import useVH from 'react-viewport-height';
- 
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
@@ -204,6 +201,10 @@ const Home = (props) => {
                                          {passwordError && <Typography variant = 'em' 
                                          style = {{color:'#F62650'}}>Password cannot be empty
                                          </Typography>}
+                                         <div></div>
+                                         <Typography variant = 'em' 
+                                         style = {{color:'white', marginTop:'50px'}} component = {Link} to = '/createAccount'>Create Account
+                                         </Typography>
                                          </div>
                                      </div>
                                      <Button variant="contained" sx = {{width:'300px', marginTop:'50px'}} type ='submit'>Login</Button>
