@@ -211,7 +211,7 @@ const Home = (props) => {
                                          </Typography>
                                          </div>
                                      </div>
-                                     <Button variant="contained" sx = {{width:'300px', marginTop:'50px'}} type ='submit'>Login</Button>
+                                     <Button variant="contained" sx = {{width:'300px', marginTop:'50px'}} type ='submit' color = 'secondary'>Login</Button>
                                  </form>
                              </div>
                          </div>

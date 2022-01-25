@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Container from '@mui/material/Container';
 import {Typography } from '@mui/material';
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,14 +13,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import CircularIndeterminate from "../UI/Spinner";
-import background from '../../assets/Jemeelah2-1.svg';
-import Paginations from "../UI/Pagination";
+// import background from '../../assets/Jemeelah2-1.svg';
+// import Paginations from "../UI/Pagination";
 
 export const History = () => {
     const [data, setData ] = useState([]);
     const user = useSelector(state => state.reducer[0]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(20);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [postsPerPage] = useState(20);
 
      
     const navigate = useNavigate();

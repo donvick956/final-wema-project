@@ -45,7 +45,8 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'white',
-    border: '2px solid #fff',
+    border: '0px solid #fff',
+    borderRadius:'10px',
     boxShadow: 24,
     p: 4,
   };
@@ -141,7 +142,7 @@ export const Multiple = () => {
                                     <Stack spacing = {2}>
                                         <Typography variant ='em' >Note: <Typography variant ='em' style= {{color:'red'}}>Recipients should not be more than 10</Typography></Typography>
                                         <TextField  variant= 'standard' label = 'Account Number' value = {accountNumber}  onChange = {e => setAccountNumber(e.target.value)}/>
-                                        <TextField variant= 'standard' id="standard-select-currency"  select value = {options}  onChange = {handleSelect}>
+                                        <TextField variant= 'standard' label = 'Bank' id="standard-select-currency"  select value = {options}  onChange = {handleSelect}>
                                             {bank.map((val,key) => <MenuItem key={key} style = {{color:'white'}}  value = {val}> {val}</MenuItem>)}
                                         </TextField>
                                         <TextField  variant= 'standard' label = 'Amount' value = {amount} style = {{color:'white'}} onChange = {e => setAmount(e.target.value)} onBlur = {e => setAmount(e.target.value)}/>

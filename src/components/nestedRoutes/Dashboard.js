@@ -17,8 +17,8 @@ import money from '../../assets/money.svg';
 import multiple from '../../assets/Multiple.svg';
 import mail from '../../assets/XMLID_1_.svg';
 import tangle from '../../assets/Vector-1.svg';
-import CircularIndeterminate from "../UI/Spinner";
-import ParticleBackground from "./Particle";
+// import CircularIndeterminate from "../UI/Spinner";
+// import ParticleBackground from "./Particle";
 
 
 const Dashboard = (props) => {
@@ -50,8 +50,8 @@ const Dashboard = (props) => {
         }
         const getUsers = async () => {
             // setNewUser(res.data.value)
-            let response =await axios.get(`https://xmtapi.azurewebsites.net/Customers/get_customer_by_account_number/${user[0].accountNumber}`).then(res => setNewUser(res.data));
-            console.log(newUser,'NEW USER') 
+            let response = await axios.get(`https://xmtapi.azurewebsites.net/Customers/get_customer_by_account_number/${user[0].accountNumber}`).then(res => setNewUser(res.data));
+            // console.log(newUser,'NEW USER'); 
        }
     //    const getFreshUpdate = () => {
     //     setDisplayUser(newUser);
@@ -61,7 +61,7 @@ const Dashboard = (props) => {
         // getFreshUpdate();
     }, [navigate, user,newUser]);
 
-    // if(!newUser) {
+    // if(Object.keys(newUser)) {
     //     return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
     //     <CircularIndeterminate/>
     // </div>);
