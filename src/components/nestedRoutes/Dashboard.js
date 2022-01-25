@@ -67,7 +67,7 @@ const Dashboard = (props) => {
     }
 
     return ( <>
-            <ParticleBackground />
+            {/* <ParticleBackground /> */}
     <div style = {{backgroundImage:`url(${background})`,
     height:'100vh',
     width:'100%',
