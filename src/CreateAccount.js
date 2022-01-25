@@ -107,7 +107,7 @@ export const CreateAccount = () => {
     
     async function createRequest (detail) {
         console.log(detail);
-        await axios.post('https://localhost:44322/customers/register', 
+        await axios.post('https://xmtapi.azurewebsites.net/customers/register', 
                 detail
             ).then
             (response => setUser(response.data)).catch

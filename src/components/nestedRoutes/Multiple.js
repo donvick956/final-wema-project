@@ -108,6 +108,7 @@ export const Multiple = () => {
             console.log(receiver.length);
             setReceiver(prevState => [...prevState,{transactionAmount: Number(amount),
                 receiverAccount:accountNumber,
+                narration:'',
                bank:options}]);
             handleClose();
             resetState();
@@ -173,6 +174,9 @@ export const Multiple = () => {
                 <Grid container direction='column' spacing = {3}>
                     <Grid item>
                             <Typography variant="body1" style =  {{marginLeft: 20, fontSize:15}}>Groups</Typography>
+                    </Grid>
+                    <Grid item>
+                            <Typography variant="h6" style =  {{marginLeft: 20, fontSize:12, marginTop:15}}>No group yet</Typography>
                     </Grid>
                     </Grid>
                 </Grid>

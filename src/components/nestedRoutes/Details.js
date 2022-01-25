@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { useSelector } from 'react-redux';
+import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import background from '../../assets/Jemeelah1-1.svg';
@@ -36,6 +37,12 @@ export const Details = () => {
     const handleClose = () => setOpen(false);
     const [error,setError] = useState(false);
     const [pin, setPin] = useState('');
+    
+    const [open1, setOpen1] = useState(false);
+    const [groupName,setGroupName] = useState('')
+    const handleOpen1 = () => setOpen1(true);
+    const handleClose1 = () => setOpen1(false);
+    
 
     const navigate = useNavigate();
 
@@ -68,7 +75,8 @@ export const Details = () => {
                 setError(false);
                 console.log(pin);
                 let response =await axios.post('https://xmtapi.azurewebsites.net/Transaction/make_transfer', {senderAccount:sender[0].accountNumber, 
-                accountPin: pin.toString(), 
+                accountPin: pin.toString(),
+                groupName:groupName.length > 0 ? groupName:'Xtransfer', 
                 transfers:multipleTransfer}).then(res => res.data.message).catch(err => console.error(err,'error on post request of transfer'));
                 console.log(response);
                 navigate(`/welcome/result/${response}`);
@@ -94,7 +102,27 @@ export const Details = () => {
                     <Typography variant="body1" color ='primary' style =  {{marginLeft: 90, marginTop:100, fontSize:20}}>Transfer Details</Typography>
                 </Container>
                 <Container>
-                    <TableContainer style =  {{marginLeft: 100, marginTop:50}} >
+                <div  color ='primary' style =  {{marginLeft: 90, marginTop:10, fontSize:12, display:'flex'}}>
+                        <Typography variant = 'h6' style ={{fontSize:15}}>To save recipients as a group click
+                        </Typography>
+                        <Typography variant = 'h6' color ='primary' onClick={handleOpen1} style = {{cursor:'pointer',fontSize:15, marginLeft:5}}>
+                                here
+                            </Typography>
+                            <Modal
+                            open={open1}
+                            onClose={handleClose1}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Stack spacing= {2}>
+                                        <TextField id="standard-basic" label="Group Name" variant="standard"value = {groupName} onChange = {e => setGroupName(e.target.value)} />
+                                        <Button variant = 'contained' onClick = {handleClose1}>Save</Button>
+                                    </Stack>
+                                </Box>
+                            </Modal>
+                    </div> 
+                    <TableContainer style =  {{marginLeft: 100, marginTop:20}} >
                         <Table sx={{ width: '700px' }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
@@ -106,7 +134,7 @@ export const Details = () => {
                             </TableHead>
                             <TableBody>
                                 {multipleTransfer && multipleTransfer.map((val,key)  => <TableRow
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }} key={key}>
                                     <TableCell component="th" scope="row">
                                         {key +1}
                                     </TableCell>
@@ -119,7 +147,7 @@ export const Details = () => {
                     </TableContainer>
                 </Container>
                 <Container>
-                <Typography variant="body1" color ='primary' style =  {{marginLeft: 110, marginTop:50, fontSize:20}}>Total: {getTotal()}</Typography>
+                <Typography variant="body1" color ='primary' style =  {{marginLeft: 110, marginTop:50, fontSize:20}}>Total:N {getTotal()}</Typography>
                 </Container>
                 <Container>
                     <Grid container style =  {{marginLeft: 90, marginTop:50}} >

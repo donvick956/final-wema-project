@@ -207,7 +207,7 @@ const Home = (props) => {
                                          </Typography>}
                                          <div></div>
                                          <Typography variant = 'em' 
-                                         style = {{color:'white', marginTop:'50px'}} component = {Link} to = '/createAccount'>Create Account
+                                         style = {{color:'white', marginTop:'50px', position: 'relative', top:'10px '}} component = {Link} to = '/createAccount'>Create Account
                                          </Typography>
                                          </div>
                                      </div>
