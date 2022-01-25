@@ -78,41 +78,48 @@ const Dashboard = (props) => {
     // marginBottom:200
     }}>
         <Container>
-            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 20, fontSize:20, marginTop:70}}>Good {time}, {user[0].firstName}</Typography>}
+            {user.length && <Typography variant="body1" color ='primary' style =  {{marginLeft: 40, fontSize:20, marginTop:70}}>Good {time}, {user[0].firstName}</Typography>}
         </Container>
         <Container>
           <Grid container direction='row' spacing = {0} style={{marginLeft:20, marginRight:20,marginTop:20}}>
-             <Grid item md ={6} xs = {12} style={{marginTop:20, padding:0,}}>
+             <Grid item md ={6} xs = {12} style={{marginTop:20, padding:0}}>
                  
-                 <div style = {{ backgroundImage:`url(${atm})`,width:'50%', height:'250px', borderRadius:5, backgroundRepeat:'no-repeat', backgroundPosition:'center', backgroundSize:'cover'}}>
+                 <div style = {{ backgroundImage:`url(${atm})`,
+                //   width:'50%',
+                  height:'250px', 
+                  borderRadius:20,
+                  backgroundRepeat:'no-repeat',
+                //    backgroundPosition:'center',
+                //    backgroundSize:'cover'
+                  }}>
                     <Grid  item container direction='column' spacing ={3} justifyContent ='space-between'>
                         <Grid item> 
                             <div style={{display:'block', marginLeft:10}}>
                                 <div>
-                                <Typography variant = 'p' style ={{color:'white', marginLeft:10}}>Tier 3 Saving account</Typography>
+                                <Typography variant = 'p' style ={{color:'white', marginLeft:20, fontSize:10}}>Tier 3 Saving account</Typography>
                                 </div>
                                 <div>
-                               { newUser && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>N {newUser.accountBalance}</Typography>}
+                               { newUser && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:20, fontSize:20}}>N {newUser.accountBalance}</Typography>}
                                 </div>
                             </div>
                         </Grid>
                         <Grid item alignItems='flex-end'>
-                            { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:20}}>Account No: {user[0].accountNumber}</Typography>}
+                            { user.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:30, fontSize:15}}>Account No: {user[0].accountNumber}</Typography>}
                         </Grid>
                     </Grid>
                  </div>
                  </Grid>
              <Grid item md ={6} xs = {12}>
-                 <Grid item md = {12} xs = {12}>What would you like to do today?</Grid>
+                 <Grid item md = {12} xs = {12} style ={{marginLeft:20}}>What would you like to do today?</Grid>
                  <Grid container style={{marginTop:10}}>
                     <Grid item md = {6} xs = {12}>
-                        <div style = {{display:'flex',justifyContent:'sapce-between', marginTop:10}}>
+                        <div style = {{display:'flex',justifyContent:'sapce-between', marginTop:10,marginLeft:10}}>
                             <img src={multiple} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/multiple' onClick={() => props.setValue(2)}/>
                             <Typography color="primary" style = {{marginLeft:10,textDecoration:'none',zIndex:1000}} component = {Link} to = '/welcome/multiple' onClick={() => props.setValue(2)}>Multiple Transfer</Typography>
                         </div>
                     </Grid>
                     <Grid item md = {6} xs = {12}>
-                        <div style = {{display:'flex',justifyContent:'sapce-between',marginTop:10}}>
+                        <div style = {{display:'flex',justifyContent:'sapce-between',marginTop:10, marginLeft:10}}>
                             <img src={money} alt="multiple icon" style = {{ width:30, height:20, verticalAlign:'bottom'}} component = {Link} to = '/welcome/beneficiary' onClick={() => props.setValue(1)}/>
                             <Typography color="primary" style = {{marginLeft:10,textDecoration:'none',zIndex:1000}} component = {Link} to = '/welcome/beneficiary' onClick={() => props.setValue(1)}>Save Beneficiary</Typography>
                         </div>
@@ -122,12 +129,12 @@ const Dashboard = (props) => {
             </Grid>  
         </Container>
         <Container>    
-            <Typography variant="h6" color ='primary' style =  {{marginLeft: 20, marginTop:50, fontSize:20}}>Talk to us</Typography>
-            <Typography variant="h6"  style =  {{marginLeft: 20, fontSize:18}}>We are happy to assist</Typography>
+            <Typography variant="h6" color ='primary' style =  {{marginLeft: 30, marginTop:50, fontSize:20}}>Talk to us</Typography>
+            <Typography variant="h6"  style =  {{marginLeft: 30, fontSize:18}}>We are happy to assist</Typography>
         </Container>
 
         <Container>
-            <div style={{display:'flex',marginLeft: 20, marginTop: 10}}>
+            <div style={{display:'flex',marginLeft: 30, marginTop: 10}}>
                 <div>
                 <img src={mail} alt="mail" style={{width:30,height:30, verticalAlign:'bottom'}} />
                 <span style = {{marginLeft:5}}>help @xmt.ng</span>
