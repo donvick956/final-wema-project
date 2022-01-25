@@ -24,8 +24,8 @@ import ParticleBackground from "./Particle";
 const Dashboard = (props) => {
     const [time,setTime] = useState('');
     const navigate = useNavigate();
-    const [newUser,setNewUser] = useState([]);
-    const [displayUser,setDisplayUser] = useState([])
+    const [newUser,setNewUser] = useState('');
+    // const [displayUser,setDisplayUser] = useState([]);
     const user = useSelector(state => state.reducer);
 
 
@@ -49,22 +49,23 @@ const Dashboard = (props) => {
             }
         }
         const getUsers = async () => {
-            await axios.get('https://xmtapi.azurewebsites.net/Customers').then(res => setNewUser(res.data.value));
-            // console.log(newUser,'NEW USER') 
+            // setNewUser(res.data.value)
+            let response =await axios.get(`https://xmtapi.azurewebsites.net/Customers/get_customer_by_account_number/${user[0].accountNumber}`).then(res => setNewUser(res.data));
+            console.log(newUser,'NEW USER') 
        }
-       const getFreshUpdate = () => {
-        setDisplayUser(newUser.filter(val => val.email == user[0].email));
-       }
+    //    const getFreshUpdate = () => {
+    //     setDisplayUser(newUser);
+    //    }
         greeting();
         getUsers();
-        getFreshUpdate();
+        // getFreshUpdate();
     }, [navigate, user,newUser]);
 
-    if(!displayUser.length) {
-        return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
-        <CircularIndeterminate/>
-    </div>);
-    }
+    // if(!newUser) {
+    //     return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
+    //     <CircularIndeterminate/>
+    // </div>);
+    // }
 
     return ( <>
             {/* <ParticleBackground /> */}
@@ -91,7 +92,7 @@ const Dashboard = (props) => {
                                 <Typography variant = 'p' style ={{color:'white', marginLeft:10}}>Tier 3 Saving account</Typography>
                                 </div>
                                 <div>
-                               { displayUser.length && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>N {displayUser[0].accountBalance}</Typography>}
+                               { newUser && <Typography variant = 'span' style ={{color:'white', marginTop:10, marginLeft:10}}>N {newUser.accountBalance}</Typography>}
                                 </div>
                             </div>
                         </Grid>

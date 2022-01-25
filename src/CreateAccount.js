@@ -165,10 +165,9 @@ export const CreateAccount = () => {
                             >
                                 <Box sx={style}>
                                     <Stack style = {{display:'flex', alignItems:'center'}}>
-                                    { user && <Typography variant="body1" color ='primary' style =  {{ fontSize:20}}>Account Created successfully</Typography>}
-                                    { !user && <Typography variant="body1" color ='primary' style =  {{ fontSize:20}}>Account Created unsuccessfully</Typography>}
+                                    { user ? <Typography variant="body1" color ='primary' style =  {{ fontSize:20}}>Account Created successfully</Typography> :<Typography variant="body1" color ='primary' style =  {{ fontSize:20}}>Account Created unsuccessfully</Typography> }
                                     </Stack>
-                                    <Stack style ={{marginTop:10}}>
+                                    <Stack style ={{marginTop:10, display:'flex', alignItems:'center'}}>
                                         { user && <Typography>Click OK to navigate to login page</Typography>}
                                     </Stack>
                                     <Stack style ={{marginTop:20}} >
