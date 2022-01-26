@@ -146,7 +146,7 @@ const Welcome = (props) => {
     const handleLogOut = () => {
         dispatch(logOutAction([]));
         dispatch(createGroup({}));
-        dispatch(detailAction({}));
+        dispatch(detailAction([]));
         
         return navigate('/');
     }

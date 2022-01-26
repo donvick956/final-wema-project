@@ -40,11 +40,11 @@ export const History = () => {
 
     }, []);
 
-    if (data.length === 0)   {
-        return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
-                <CircularIndeterminate/>
-            </div>);
-    }
+    // if (data.length === 0)   {
+    //     return (<div style ={{position:'absolute', top:'50%', left:'50%'}}>
+    //             <CircularIndeterminate/>
+    //         </div>);
+    // }
     const dateTime = (params) => {
         let arr =  params.split('T');
         let arr2 = arr[1].split('.');

@@ -12,8 +12,8 @@ function* logInWatcher (action) {
     yield call(logInActionSession,action.payload);
 }
 
-function* logOutWatcher (action) {
-    yield put(logOutActionSuccess ({}));
+function* logOutWatcher () {
+    yield put(logOutActionSuccess ([]));
     yield call(logOutActionSession);
 }
 

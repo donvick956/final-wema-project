@@ -17,10 +17,9 @@ export const logOutAction = (payload) => {
         payload
     }
 } 
-export const logOutActionSuccess = (payload) => {
+export const logOutActionSuccess = () => {
     return {
         type:LOG_OUT_ACTION_SUCCESS,
-        payload
     }
 } 
 export const loginActionSuccess = (payload) => {
